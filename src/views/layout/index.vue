@@ -13,7 +13,7 @@
   import layoutHeader from './component/Header'
   import layoutMain from './component/Main'
   import layoutMenu from './component/Menu'
-
+ 
   export default {
     name: "index",
     components: {

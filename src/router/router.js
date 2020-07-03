@@ -13,18 +13,20 @@ import layout from '../views/layout/index.vue'
 //外部引入路由对象
 let routes_module = [...monitor, ...report, ...data]
 //通用子路由
-// let children_routes = [
-//     {
-//         path: '/directory',
-//         name: 'directory',
-//         component: () => import('@/views/directory/directory.vue')
-//     }
-// ]
+let children_routes = [
+    {
+        path: '/directory',
+        name: 'directory',
+        component: () => import('@/views/layout/index.vue')
+    }
+]
 
 //合并路由
-// routes_module.forEach(e => (children_routes = children_routes.concat(e)))
+routes_module.forEach(e => (children_routes = children_routes.concat(e)))
 
-let routes = [
+
+console.log('routes_module',routes_module)
+let base_routes = [
     // {
     //     path: '/',
     //     redirect: '/monitor'
@@ -41,26 +43,22 @@ let routes = [
         hidden:true,
         component: () => import('@/views/register/register.vue')
     },
-    {
-        path: '/',
-        redirect:'monitor',
-        name: '生产监控',
-        component: layout,
-        children:routes_module
-
+    // {
+    //     path: '/',
+    //     redirect:'monitor',
+    //     name: '生产监控',
+    //     component: layout,
+    //     children:routes_module
     // routes_module
     // {
     //     path: '/platform',
     //     name: 'platform',
     //     component: () => import('@/views/main.vue'),
     //     children: children_routes
-    }
+    // }
 ]
-// let routes = [...base_routes ,...routes_module]
+let routes = [...base_routes ,...routes_module]
 console.log('routes',routes)
-
-
-
 Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'hash',

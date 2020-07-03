@@ -15,7 +15,7 @@ const routes = [
     path: '/login',
     name:'登录',
     hidden:true,
-    component: () => import( '../views/Login/index.vue')
+    component: () => import( '../views/Login/login.vue')
   },
   {
     path: '/proMonitor',
@@ -41,7 +41,7 @@ const routes = [
     }],
   },
   {
-    path: '/console',
+    path: '/waterReport',
     name: '生产报表',
     component: layout,
     children:[
@@ -62,18 +62,18 @@ const routes = [
     // }
   ],
   },
-  {
-    path: '/console',
-    redirect:'index',
-    name: '数据填报',
-    component: layout,
-    children:[
-      {
-      path: '/index',
-      name: '水质数据录入',
-      component: () => import( '../views/Console/Index'),
-    }],
-  }
+  // {
+  //   path: '/console',
+  //   redirect:'index',
+  //   name: '数据填报',
+  //   component: layout,
+  //   children:[
+  //     {
+  //     path: '/index',
+  //     name: '水质数据录入',
+  //     component: () => import( '../views/Console/Index'),
+  //   }],
+  // }
 ]
 //  const whiteRouter = ['/login','/index']
 
