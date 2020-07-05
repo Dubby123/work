@@ -67,6 +67,9 @@ export default {
         font-size: 16px;
         color: #ffffff;
     }
+    .el-menu{
+        border: none;
+    }
 }
 // @import "../../../styles/config.scss";
 </style>

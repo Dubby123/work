@@ -12,7 +12,7 @@
 <script>
   import layoutHeader from './component/Header'
   import layoutMain from './component/Main'
-  import layoutMenu from './component/Menu'
+  import layoutMenu from './component/Menu.vue'
  
   export default {
     name: "index",
