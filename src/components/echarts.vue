@@ -5,7 +5,7 @@
 <script>
 import * as echarts from 'echarts'
 export default {
-    props: ['options', 'id', 'zxc'],
+    props: ['options', 'id'],
     data() {
         return {
             chart: '',

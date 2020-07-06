@@ -1,6 +1,6 @@
 <template>
     <div>
-         <my-echarts id="echarts" :options="echartsOptions"></my-echarts>
+         <my-echarts id="ERader" :options="echartsOptions"></my-echarts>
     </div>
 </template>
 <script>

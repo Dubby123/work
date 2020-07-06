@@ -18,7 +18,7 @@
 <script>
 import SubTitle from '../../components/subTitle'
 export default {
-    name: 'subTitle',
+    name: 'waterTop',
     components:{SubTitle},
     data() {
         return {

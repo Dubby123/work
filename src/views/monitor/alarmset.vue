@@ -1,10 +1,10 @@
 <template>
   <el-container class="main_body">
-    <el-container>
-      <el-main class="main_table">
-        <el-container class="table_box">
-          <el-header class="table_header">
-            <span class="table_title">报警时间</span>
+    <el-container class="table_box">
+      <!-- 头部查询 -->
+      <el-header class="table_header">
+        <el-form :inline="true" class="demo-form-inline">
+          <el-form-item label="报警时间">
             <el-date-picker
               v-model="startTime"
               type="daterange"
@@ -12,34 +12,29 @@
               start-placeholder="开始日期"
               end-placeholder="结束日期"
             ></el-date-picker>
-            <span class="table_title">事件类型</span>
+          </el-form-item>
+          <el-form-item label="事件类型">
             <el-input v-model="selectValue" placeholder="请输入内容"></el-input>
-
-            <div class="table_btns">
-              <el-button type="primary" @click="createAlarmHandler">查询</el-button>
-              <el-button type="primary" @click="dialogFormVisible = true">新增</el-button>
-            </div>
-          </el-header>
-          <el-main class="table_content">
-            <i-table :list="list" :options="options" :columns="columns" :operates="operates"></i-table>
-            <footer class="table_footer">
-              <el-pagination
-                background
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="current"
-                :page-sizes="pageSize"
-                :page-size="size"
-                layout="total, sizes, prev, pager, next, jumper, slot"
-                :total="total"
-                prev-text="上一页"
-                next-text="下一页"
-              ></el-pagination>
-            </footer>
-          </el-main>
-        </el-container>
+          </el-form-item>
+        </el-form>
+        <div>
+          <el-button type="primary" @click="createAlarmHandler">查询</el-button>
+          <el-button @click="dialogFormVisible = true" style="color:#0066ff">新增</el-button>
+        </div>
+      </el-header>
+      <!-- 表格列表 -->
+      <el-main class="table_content">
+        <i-table
+          :list="list"
+          :options="options"
+          :columns="columns"
+          :operates="operates"
+          :pagination="pagination"
+        ></i-table>
       </el-main>
     </el-container>
+
+    <!-- 新增类别 -->
     <el-dialog
       title="新增报警设置"
       :visible.sync="dialogFormVisible"
@@ -88,21 +83,23 @@ export default {
           penson: "王蕊蕊",
           other: "快点吧"
         },
-           {
+        {
           id: 2,
           dev: "类型1事件",
           status: "一级",
           time: "2020-02-02 20:20:20",
           penson: "王蕊蕊",
           other: "快点吧"
-        },   {
+        },
+        {
           id: 3,
           dev: "类型1事件",
           status: "一级",
           time: "2020-02-02 20:20:20",
           penson: "王蕊蕊",
           other: "快点吧"
-        },   {
+        },
+        {
           id: 4,
           dev: "类型1事件",
           status: "一级",
@@ -123,7 +120,7 @@ export default {
           prop: "id",
           label: "序号",
           align: "center",
-          width:'50px'
+          width: "50px"
         },
         {
           prop: "dev",
@@ -156,19 +153,26 @@ export default {
         fixed: "right",
         list: []
       }, // 列操作按钮
+      pagination: {
+        total: 100,
+        currentPage: 1
+      },
+      options: {
+        index: true
+      },
       startTime: "",
       endTime: "",
       selectValue: "",
       dialogFormVisible: false,
       current: 1,
       size: 10,
-      pageSize:[],
+      pageSize: [],
       total: 100,
-      form:{}
+      form: {}
     };
   },
   methods: {
-    updatePass(){},
+    updatePass() {},
     //重置分页
     _resetCurrentPage() {
       this.$store.commit("alarmConfig/changeCurrent", 1);
@@ -220,12 +224,13 @@ export default {
 <style lang="less" scoped>
 .table_header {
   display: flex;
-  align-content: center;
-  .table_title {
-    width: 100px;
-  }
-  .el-input {
-    width: 150px;
-  }
+  // align-content: center;
+  justify-content: space-between;
+  // .table_title {
+  //   width: 100px;
+  // }
+  // .el-input {
+  //   width: 150px;
+  // }
 }
 </style>

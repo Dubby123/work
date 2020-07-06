@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-// import WaterTop from './components/waterTop'
+import WaterTop from './components/waterTop'
 // import WBar from './components/wBar'
 export default {
     // components: {WaterTop, WBar },
