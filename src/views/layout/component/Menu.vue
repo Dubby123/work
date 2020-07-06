@@ -58,16 +58,27 @@ export default {
     // min-width: 200px;
     min-width: 208px;
     height: 100vh;
-    background-color: #0B2A92;
+    background-color: #0b2a92;
     float: left;
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 8000;
-    .logo{
+    .logo {
         font-size: 16px;
         color: #ffffff;
+        line-height: 56px;
+        background-color: #071059;
+        &::before {
+            display: inline-block;
+            content: '';
+            width: 23px;
+            height: 23px;
+            background: url('../../../assets/imgs/log.png')no-repeat;
+            background-size: 100%;
+            margin-right: 5px;
+        }
     }
-    .el-menu{
+    .el-menu {
         border: none;
     }
 }

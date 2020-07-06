@@ -29,7 +29,7 @@ console.log('routes_module',routes_module)
 let base_routes = [
     // {
     //     path: '/',
-    //     redirect: '/monitor'
+    //     redirect: 'monitor'
     // },
     {
         path: '/login',

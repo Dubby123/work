@@ -6,10 +6,12 @@ import ElementUI from 'element-ui';
 import './style/reset.css'
 // import './icons/index'
 import 'element-ui/lib/theme-chalk/index.css';
-import  global from './utils/global' //全局注册方法
+// import echarts from 'echarts'
+// import  global from './utils/global' //全局注册方法
 
 Vue.use(global)
 Vue.use(ElementUI);
+// Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 new Vue({
   router,

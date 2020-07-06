@@ -1,12 +1,15 @@
 <template>
     <div>
-        能源报表
+        能源处理报表
+        <pictorial-bar></pictorial-bar>
 
     </div>
 </template>
 <script>
+import pictorialBar from './components/pictorialBar'
 export default {
-    name:'energy',
+    name:'mud',
+    components:{pictorialBar},
     data(){
         return{}
     },

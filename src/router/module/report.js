@@ -10,17 +10,17 @@ const routes = [
             {
                 path: '/report/water', //水质报表
                 name: '水质报表',
-                component: () => import('@/views/report/water.vue')
+                component: () => import('@/views/report/water/water.vue')
             },
             {
                 path: '/report/mud', //泥处理报表
                 name: '泥处理报表',
-                component: () => import('@/views/report/mud.vue')
+                component: () => import('@/views/report/mud/mud.vue')
             },
             {
                 path: '/report/energy', //能源报表
                 name: '能耗报表',
-                component: () => import('@/views/report/energy.vue')
+                component: () => import('@/views/report/energy/energy.vue')
             },
 
         ]
