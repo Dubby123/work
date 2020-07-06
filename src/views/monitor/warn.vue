@@ -15,38 +15,38 @@
   components: {iTable},
   data () {
    return {
-    list: [
-       {
-        id: '24',
-        title: '编号3',
-        state:0
-       },
-       {
-        id: '23',
-        title: '编号3',
-        state:1
-       },
-       {
-        id: '23',
-        title: '编号3',
-        state:2
-       },
-       {
-        id: '2',
-        title: '编号3',
-        state:0
-       },
-       {
-        id: '223',
-        title: '编号3',
-        state:1
-       },
-       {
-        id: '2444',
-        title: '编号3',
-        state:1
-       },
-    ], // table数据
+       list: [
+        {
+          id: 1,
+          dev: "类型1事件",
+          status: "一级",
+          time: "2020-02-02 20:20:20",
+          penson: "王蕊蕊",
+          other: "快点吧"
+        },
+           {
+          id: 2,
+          dev: "类型1事件",
+          status: "一级",
+          time: "2020-02-02 20:20:20",
+          penson: "王蕊蕊",
+          other: "快点吧"
+        },   {
+          id: 3,
+          dev: "类型1事件",
+          status: "一级",
+          time: "2020-02-02 20:20:20",
+          penson: "王蕊蕊",
+          other: "快点吧"
+        },   {
+          id: 4,
+          dev: "类型1事件",
+          status: "一级",
+          time: "2020-02-02 20:20:20",
+          penson: "王蕊蕊",
+          other: "快点吧"
+        }
+      ], 
     options: {
      stripe: true, // 是否为斑马纹 table
      loading: false, // 是否添加表格loading加载动画
@@ -54,60 +54,46 @@
     //  mutiSelect: true, // 是否支持列表项选中功能
     }, // table 的参数
     columns: [
-     {
-      prop: 'id',
-      label: '编号',
-      align: 'center',
-     },
-     {
-      prop: 'title',
-      label: '标题',
-      align: 'center',
-      formatter: (row, column, cellValue) => {
-       return `<span style="white-space: nowrap;color: red;">${row.title}</span>`
-      }
-     },
-     {
-      prop: 'state',
-      label: '状态',
-      align: 'center',
-      render: (h, params) => {
-       return h('el-tag', {
-       props: {type: params.row.state === 0 ? 'success' : params.row.state === 1 ? 'info' : 'danger'} // 组件的props
-       }, params.row.state === 0 ? '上架' : params.row.state === 1 ? '下架' : '审核中')
-      }
-     },
- 
-    ], // 需要展示的列
+        {
+          prop: "id",
+          label: "序号",
+          align: "center",
+          width:'50px'
+        },
+        {
+          prop: "dev",
+          label: "事件类型",
+          align: "center"
+        },
+        {
+          prop: "status",
+          label: "设备名称",
+          align: "center"
+        },
+          {
+          prop: "status",
+          label: "设备编码",
+          align: "center"
+        },
+        {
+          prop: "time",
+          label: "报警时间",
+          align: "center"
+        },
+        {
+          prop: "penson",
+          label: "报警状态",
+          align: "center"
+        },
+        {
+          prop: "other",
+          label: "报警描述",
+          align: "center"
+        }], // 需要展示的列
     operates: {
      width: 200,
      fixed: 'right',
-     list: [
-      {
-       id:'1',
-       label: '编辑',
-       type: 'warning',
-       show: true,
-       icon: 'el-icon-edit',
-       plain: true,
-       disabled: false,
-       method: (index, row) => {
-        this.handleEdit(index, row)
-       }
-      },
-      {
-       id:'2',
-       label: '删除',
-       type: 'danger',
-       icon: 'el-icon-delete',
-       show: true,
-       plain: false,
-       disabled: false,
-       method: (index, row) => {
-        this.handleDel(index, row)
-       }
-      }
-     ]
+     list: [],
     } // 列操作按钮
    }
   },
