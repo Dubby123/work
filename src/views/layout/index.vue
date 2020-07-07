@@ -1,7 +1,7 @@
 <template>
     <div id="layout-warp">
-        <layoutMenu/>
-        <div>
+        <layoutMenu class="left"/>
+        <div class="right">
             <layoutHeader/>
             <layoutMain/>
         </div>
@@ -27,5 +27,9 @@
 <style scoped lang='less'>
     #layout-warp{
         display: flex;
+
+        .right{
+          flex:1
+        }
     }
 </style>

@@ -2,7 +2,7 @@
   <el-container class="main_body">
     <el-container class="table_box">
       <!-- 头部查询 -->
-      <el-header class="table_header">
+      <!-- <el-header class="table_header">
         <el-form :inline="true" class="demo-form-inline">
           <el-form-item label="报警时间">
             <el-date-picker
@@ -21,7 +21,32 @@
           <el-button type="primary" @click="createAlarmHandler">查询</el-button>
           <el-button @click="dialogFormVisible = true" style="color:#0066ff">新增</el-button>
         </div>
-      </el-header>
+      </el-header> -->
+
+  <el-header class="search_form doc_file_box">
+                <el-form :inline="true" size="small" label-width="80px">
+                    <el-row>
+                        <el-col :span="22">
+                            <el-form-item label="文件名">
+                                <el-input v-model="fileName" placeholder="输入关键字查找" clearable></el-input>
+                            </el-form-item>
+                            <el-form-item label="文件类型">
+                                <el-select v-model="fileType">
+                                    <el-option label="全部" value=""></el-option>
+                                    <el-option v-for="item in fileTypeList" :label="item" :value="item" :key="item"></el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="2">
+                            <el-button type="primary" @click="searchHandler">查询</el-button>
+                        </el-col>
+                    </el-row>
+                </el-form>
+            </el-header>
+
+
+
+
       <!-- 表格列表 -->
       <el-main class="table_content">
         <i-table

@@ -3,7 +3,7 @@
         <div class="login">
             <div class="content">
                 <div class="title">用户登录</div>
-                <el-form :model="loginForm" :rules="loginRules">
+                <el-form :model="loginForm" :rules="loginRules" ref='loginForm'>
                     <el-form-item prop="username">
                         <el-input
                             v-model="loginForm.username"
@@ -55,23 +55,19 @@
                     <el-form-item style="margin-bottom: 0px;">
                         <el-button
                             type="primary"
-                            @click="login"
+                            @click="submitForm"
                             :disabled="loading"
                             class="loginButton"
-                            >登录</el-button
+                            >登录123132</el-button
                         >
                     </el-form-item>
                 </el-form>
-                <div  class="other">
+                <div class="other">
                     <img class="weixin" src="../../assets/imgs/wechat.png" />
                     <span class="newuser" @click="registUserHandler"
                         >新用户注册</span
                     >
                 </div>
-
-                <!-- <span class="otherlogin">其它登录方式</span>
-               
-                <!-- <img class="dingding" src="../assets/img/dingding.png" />  -->
             </div>
         </div>
     </div>
@@ -81,7 +77,7 @@
 import JcRange from './JcRange.vue'
 import Const from '@/common/const'
 import Utils from '@/common/utils'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import { Message } from 'element-ui'
 
 export default {
@@ -89,8 +85,8 @@ export default {
     data() {
         return {
             loginForm: {
-                username: '',
-                password: '',
+                username: 'admin',
+                password: 'admin',
             },
             status: '',
             loading: false,
@@ -136,8 +132,25 @@ export default {
         // },
         onMpanelSuccess() {},
         onMpanelError() {},
+        submitForm() {
+            console.log('123132')
+            this.$refs.loginForm.validate((valid) => {
+                if (valid) {
+                    
+                    this.login()
+                } else {
+                    console.log('error submit!!')
+                    return false
+                }
+            })
+        },
         //登录
-        login(data) {
+        login() {
+            const data = {
+                 username: this.loginForm.username,
+                password: this.loginForm.username,
+                remember:this.remember
+            }
             this.$store
                 .dispatch('login/login', data)
                 .then((res) => {
@@ -160,12 +173,12 @@ export default {
                                     JSON.stringify(this.loginForm)
                                 )
                             }
-                            this.$router.push({
-                                path: '/directory',
-                                replace: true,
-                            })
+                            // this.$router.push({
+                            //     path: '/directory',
+                            //     replace: true,
+                            // })
                         })
-                    } else {
+                    } else {                    
                         Message.error({
                             showClose: true,
                             message: res.message,
@@ -174,7 +187,6 @@ export default {
                     }
                 })
                 .catch(() => {
-                    this.authCode()
                     this.loading = false
                 })
         },
@@ -381,7 +393,7 @@ export default {
         #0e6afa
     );
 }
-.other{
+.other {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;

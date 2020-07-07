@@ -1,32 +1,49 @@
 <template>
-    <div id="nav-wrap">
-        <h1 class="logo">绍兴智慧水处理平台</h1>
+    <div class="navigator-container" ref="navigator">
+        <div class="navigator_header">
+                绍兴智慧水处理平台
+            </div>
         <el-menu
-            class="el-menu-vertical-demo"
-            text-color="#fff"
-            background-color="transparent"
+            ref="menu"
+            class="el-menu-vertical"
+            :default-active="this.$route.path"
+             background-color="transparent"
             active-text-color="#fff"
-            :router="true"
+            text-color="rgba(255,255,255,0.85)"
+            router
         >
-            <template v-for="(item, index) in routerList">
-                <el-submenu
-                    :index="'' + index"
-                    v-if="!item.hidden"
-                    :key="item.id"
+            <template v-for="(item, index) in navList">
+                <el-menu-item
+                    v-if="!item.childList || item.childList.length <= 0"
+                    :index="item.context"
+                    :key="index"
                 >
+                    <i :class="'icon icon-' + item.icon"></i>
+                    <span slot="title">{{ item.name }}</span>
+                </el-menu-item>
+                <el-submenu :index="item.context" :key="index" v-else>
                     <template slot="title">
-                        <i :class="item.icon"></i>
-                        <span slot="title">{{ item.name }}</span>
+                        <i :class="'icon icon-' + item.icon"></i
+                        ><span slot="title">{{ item.name }}</span>
                     </template>
-                    <!--                    子菜单-->
-                    <template v-for="subItem in item.children">
+                    <template v-for="(item, index) in item.childList">
                         <el-menu-item
-                            :index="subItem.path"
-                            v-if="!subItem.hidden"
-                            :key="subItem.id"
+                            v-if="!item.childList || item.childList.length <= 0"
+                            :index="item.context"
+                            :key="index"
+                            v-html="item.name"
                         >
-                            {{ subItem.name }}</el-menu-item
-                        >
+                        </el-menu-item>
+                        <el-submenu :index="item.context" :key="index" v-else>
+                            <template slot="title">{{ item.name }}</template>
+                            <template v-for="(item, index) in item.childList">
+                                <el-menu-item
+                                    :index="item.context"
+                                    :key="index"
+                                    v-html="item.name"
+                                ></el-menu-item>
+                            </template>
+                        </el-submenu>
                     </template>
                 </el-submenu>
             </template>
@@ -35,52 +52,141 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex'
+import CONST  from '@/common/const'
 export default {
-    name: 'Menu',
+    name: 'Navigator',
+    // props: {
+    //     navList: Array
+    // },
+    created() {
+        console.log('NAV_LIST_SOFTWARE',CONST.NAV_LIST_SOFTWARE)
+    },
+    mounted() {
+        // if (this.isCollapse) {
+        //     this.__toggleClass(document.getElementById('body'), 'collapseMenu')
+        // }
+    },
     data() {
         return {
-            // isCollapse: false
+            navList: CONST.NAV_LIST_SOFTWARE,
         }
     },
-    computed: {
-        routerList() {
-            return this.$router.options.routes
-        },
-        isCollapse() {
-            return this.$store.state.app.isCollapse
-        },
-    },
+
+    methods: {},
 }
 </script>
-
-<style scoped lang="less">
-#nav-wrap {
-    // min-width: 200px;
+<style lang="less" scoped>
+.navigator-container {
     min-width: 208px;
     height: 100vh;
-    background-color: #0b2a92;
+    background-image: linear-gradient( 
+		#0b2a92 , 
+		#070c4f );
     float: left;
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 8000;
-    .logo {
-        font-size: 16px;
-        color: #ffffff;
-        line-height: 56px;
-        background-color: #071059;
-        &::before {
-            display: inline-block;
-            content: '';
-            width: 23px;
-            height: 23px;
-            background: url('../../../assets/imgs/log.png')no-repeat;
-            background-size: 100%;
-            margin-right: 5px;
-        }
-    }
-    .el-menu {
-        border: none;
+}
+.navigator_header {
+    width: 100%;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 56px;
+    background-color: #071059;
+    &::before {
+        display: inline-block;
+        content: '';
+        width: 23px;
+        height: 23px;
+        background: url('../../../assets/imgs/log.png') no-repeat;
+        background-size: 100%;
+        margin-right: 5px;
     }
 }
-// @import "../../../styles/config.scss";
+.el-menu-vertical {
+     min-width: 208px; 
+    float: left;
+    border-right: none;
+    .el-menu-item {
+        height: 56px;
+        line-height: 56px;
+        font-size: 12px;
+        border-left: 5px solid transparent;
+        &.is-active {
+            font-weight: bold;
+            background-color: #36363d !important;
+            border-left: 5px solid #0066ff;
+            opacity: 0.8;
+        }
+    }
+    .el-submenu {
+        .el-submenu__title {
+            height: 56px;
+            line-height: 56px;
+            font-size: 12px;
+            // padding: 0 20px 0 15px !important;
+            border-left: 5px solid #0066ff;
+            &.is-active {
+                font-weight: bold;
+            }
+            i {
+                color: #fff;
+            }
+        }
+        &.is-active .el-submenu__title {
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+}
+.icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    // background: url('../../assets/imgs/icon-navigator.png') no-repeat center center;
+    vertical-align: middle;
+    margin-right: 10px;
+    &.icon-home {
+        background-position: 0px 0px;
+    }
+    &.icon-user {
+        background-position: 0px -40px;
+    }
+    &.icon-auth {
+        background-position: 0px -82px;
+    }
+    &.icon-message {
+        background-position: 0px -122px;
+    }
+    &.icon-file {
+        background-position: 0px -164px;
+    }
+    &.icon-process {
+        background-position: 0px -202px;
+    }
+    &.icon-watermark {
+        background-position: 0px -244px;
+    }
+    &.icon-log {
+        background-position: 0px -290px;
+    }
+    &.icon-store {
+        background-position: 0px -332px;
+    }
+    &.icon-gateway {
+        background-position: 0px -374px;
+    }
+    &.icon-port {
+        background-position: 0px -415px;
+    }
+    &.icon-software {
+        // background-position: 0px -415px;
+        // background: url('../../assets/imgs/icon-software.png') no-repeat center center;
+    }
+    &.icon_expand {
+        background-position: -78px -0px;
+        margin-right: 0px;
+    }
+}
 </style>

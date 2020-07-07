@@ -124,70 +124,53 @@ const NAV_LIST = [
 ]
 const NAV_LIST_SOFTWARE = [
     {
-        name: '公共目录',
-        code: 'PLAT_SOFTWARE_FACTORY',
-        context: '/directory',
-        icon: 'file'
-    },
-    {
-        name: '文档中心',
-        code: 'PLAT_SOFTWARE_FACTORY',
-        context: '/file',
-        icon: 'log'
-    },
-    {
-        name: '权限管理',
+        name: '生产监控',
         code: 'PLAT_SOFTWARE_FACTORYsssw',
         context: '/auth',
         icon: 'auth',
         childList: [
             {
-                name: '公共目录权限',
+                name: '流程检测',
                 code: 'PLAT_AUTH_DIRECTORY',
-                context: '/auth/directory'
+                context: '/monitor/process'
             },
             {
-                name: '文件接口权限',
+                name: '生产报警',
                 code: 'PLAT_FILE_AUTH',
-                context: '/auth/file'
+                context: '/monitor/warn'
+            },
+            {
+                name: '报警设置',
+                code: 'PLAT_FILE_AUTH',
+                context: '/monitor/alarmset'
             }
         ]
     },
     {
-        name: '存储管理',
+        name: '生产报表',
         code: 'PLAT_SOFTWARE_FACTORYssa',
-        context: '/store',
+        context: '/report',
         icon: 'store',
         childList: [
             {
-                name: '存储管理',
+                name: '水质报表',
                 code: 'PLAT_STORAGE_MANGE',
-                context: '/store/mange'
+                context: '/report/water'
             },
             {
-                name: '报警列表',
+                name: '泥处理报表',
                 code: 'PLAT_STORAGE_ALARM',
-                context: '/store/alarm'
+                context: '/report/mud'
             },
             {
-                name: '清理策略',
+                name: '能耗报表',
                 code: 'PLAT_STORAGE_STRATEGY',
-                context: '/store/strategy'
-            },
-            {
-                name: '存储清理',
-                code: 'PLAT_STORAGE_CLEAN',
-                context: '/store/clean'
-            },
-            {
-                name: '日志列表',
-                code: 'PLAT_STORAGE_LOG',
-                context: '/store/log'
+                context: '/report/energy'
             }
         ]
     },
     {
-        name: '水印管理',
+        name: '数据填报',
         code: 'PLAT_WATERMARK',
         context: '/watermark',
         icon: 'watermark'
@@ -199,70 +182,11 @@ const NAV_LIST_SOFTWARE = [
  * 根据 tag 进行匹配页面按钮元素
  */
 var OPERATE_AUTH = {}
-const OPERATELIST = [
-    //操作权限列表
-    {
-        id: 0,
-        value: '权限设置'
-    },
-    {
-        id: 1,
-        value: '文件上传'
-    },
-    {
-        id: 2,
-        value: '文件下载'
-    },
-    {
-        id: 3,
-        value: '文件移动'
-    },
-    {
-        id: 4,
-        value: '文件复制'
-    },
-    {
-        id: 5,
-        value: '文件删除'
-    },
-    {
-        id: 6,
-        value: '文件重命名'
-    },
-    {
-        id: 7,
-        value: '文件预览'
-    },
-    {
-        id: 8,
-        value: '新建目录'
-    },
-    {
-        id: 9,
-        value: '修改目录'
-    },
-    {
-        id: 10,
-        value: '删除目录'
-    },
-    {
-        id: 11,
-        value: '文件评论'
-    },
-    {
-        id: 12,
-        value: '文件评分'
-    },
-    {
-        id: 13,
-        value: '显示文件名'
-    }
-]
+
 export default {
     PAGESIZE_CONFIG,
     STATUS,
     NAV_LIST,
     OPERATE_AUTH,
     NAV_LIST_SOFTWARE,
-    OPERATELIST
 }

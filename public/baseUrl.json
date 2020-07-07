@@ -1,0 +1,10 @@
+{
+    "baseUrl": "http://10.10.100.197:8090",
+    "exUrl": {
+        "/hc-websocket": "",
+        "/hc-system": "",
+        "/hc-accesscontrol": "",
+        "/hc-filedfs": ""
+    },
+    "logoutUrl":""
+}

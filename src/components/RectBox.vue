@@ -11,7 +11,7 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   ._RectBox_root {
     position: relative;
     width: 100%;
