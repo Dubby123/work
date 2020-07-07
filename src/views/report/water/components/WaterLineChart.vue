@@ -69,6 +69,7 @@
           tooltip: {
             show: true,
             trigger: 'axis',
+            extraCssText: 'text-align: left;',
           },
           grid: {
             // show: false,
