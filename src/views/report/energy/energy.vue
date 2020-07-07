@@ -1,15 +1,17 @@
 <template>
     <div>
         能源处理报表
-        <pictorial-bar></pictorial-bar>
+        <!-- <pictorial-bar></pictorial-bar> -->
+        <bar></bar>
 
     </div>
 </template>
 <script>
-import pictorialBar from './components/pictorialBar'
+// import pictorialBar from './components/pictorialBar'
+import bar from './components/bar'
 export default {
     name:'mud',
-    components:{pictorialBar},
+    components:{bar},
     data(){
         return{}
     },

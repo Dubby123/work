@@ -65,8 +65,19 @@
           </div>
         </template>
       </el-table-column>
+
       <!--endregion-->
     </el-table>
+    <div class="pagation-container">
+      <el-pagination
+        v-if="pagination"
+        background
+        layout="total, prev, pager, next, jumper"
+        :total="pagination.total"
+        :current-page="pagination.currentPage"
+        @current-change="handleIndexChange"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 <!--endregion-->
@@ -88,7 +99,9 @@ export default {
         stripe: false, // 是否为斑马纹 table
         highlightCurrentRow: false // 是否要高亮当前行
       }
-    } // table 表格的控制参数
+    }, // table 表格的控制参数
+    fetchData: Function, // 查询分页数据的函数
+    pagination: Object, // 分页器的配置对象
   },
   //组件
   components: {
@@ -132,7 +145,14 @@ export default {
     showActionTableDialog() {
       console.log(4444);
       this.$emit("handelAction");
-    }
+    },
+      handleIndexChange (current) {
+            console.log(current);
+            // 更新选中的当前页的值
+            this.pagination.currentPage = current;
+            // 获取当前页数据
+            this.fetchData()
+          },
   }
 };
 </script>
@@ -140,11 +160,15 @@ export default {
 .el-table {
   font-size: 12px;
 }
-.el-table td{
+.el-table td {
   background-color: red;
 }
 .el-table td,
 .el-table th {
-  padding: 0 ;
+  padding: 0;
+}
+.pagation-container {
+  margin: 30px 0 0 0;
+  text-align: right;
 }
 </style>
