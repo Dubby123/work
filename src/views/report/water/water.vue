@@ -1,25 +1,26 @@
 <template>
-    <div>
-        <!-- <water-top></water-top> -->
-        <!-- <w-bar class="bar"></w-bar> -->
-    </div>
+  <div class="water-root">
+    <!--    <water-top />-->
+    <flow-water-statistics />
+  </div>
 </template>
 <script>
-// import WaterTop from './components/waterTop'
-// import WBar from './components/wBar'
+import FlowWaterStatistics from './module/FlowWaterStatistics';
+// import waterTop from './components/waterTop';
+
 export default {
-    // components: {WaterTop, WBar },
-    data() {
-        return {}
-    },
+  data() {
+    return {}
+  },
+  components: {
+    FlowWaterStatistics,
+    // waterTop,
+  },
 }
 </script>
-<style scoped lang="less">
-.bar {
-    width: 1211px;
-    height: 344px;
-    background-color: #ffffff;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
-    border-radius: 4px;
-}
+<style scoped lang="scss">
+  .water-root {
+    position: relative;
+    width: 100%;
+  }
 </style>

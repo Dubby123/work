@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router/router.js'
 import store from './store'
 import ElementUI from 'element-ui';
+import './components/globalRegister.js'
 import './style/reset.css'
 // import './icons/index'
 import 'element-ui/lib/theme-chalk/index.css';

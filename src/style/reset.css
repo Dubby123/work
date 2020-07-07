@@ -112,7 +112,7 @@ button {
 }
 #app {
     min-width: 1280px;
-    font-family: 'Microsoft yahei', Georgia, Times, 'Times New Roman', serif;
+    /*font-family: 'Microsoft yahei', Georgia, Times, 'Times New Roman', serif;*/
 }
 #body {
     height: 100%;
