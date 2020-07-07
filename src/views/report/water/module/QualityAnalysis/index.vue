@@ -1,11 +1,10 @@
-<!-- 流量水质统计 -->
+<!-- 流量水质分析 -->
 <template>
-  <div class="_FlowWaterStatistics_root">
-    <sub-title name="流量水质统计" />
+  <div class="_QualityAnalysis_root">
+    <sub-title name="流量水质分析" />
     <div class="content">
-      <panel-one class="item-swapper" />
-      <panel-two class="item-swapper" />
-      <panel-three class="item-swapper" />
+      <panel-one class="panel-one" />
+      <panel-two class="panel-two" />
     </div>
   </div>
 </template>
@@ -13,20 +12,18 @@
 <script>
   import PanelOne from './PanelOne'
   import PanelTwo from './PanelTwo'
-  import PanelThree from './PanelThree'
 
   export default {
-    name: 'FlowWaterStatistics',
+    name: 'QualityAnalysis',
     components: {
       PanelOne,
       PanelTwo,
-      PanelThree,
     },
   };
 </script>
 
 <style lang="scss" scoped>
-  ._FlowWaterStatistics_root {
+  ._QualityAnalysis_root {
     position: relative;
     .content {
       margin-top: 20px;
@@ -34,8 +31,11 @@
       height: 444px;
       display: flex;
       justify-content: space-between;
-      .item-swapper {
+      .panel-one {
         width: 33%;
+      }
+      .panel-two {
+        width: 66%;
       }
     }
   }

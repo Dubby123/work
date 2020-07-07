@@ -1,45 +1,38 @@
-<!-- WaterLineChart -->
+<!-- QualityAnalysisPie -->
 <template>
-  <div class="_WaterLineChart_root">
+  <div class="_QualityAnalysisPie_root">
     <div class="chart-root" ref="chart_dom"></div>
   </div>
 </template>
 
 <script>
   import echarts from 'echarts/lib/echarts';
-  import 'echarts/lib/chart/line';
+  import 'echarts/lib/chart/pie';
   import 'echarts/lib/component/tooltip';
 
   export default {
-    name: 'WaterLineChart',
+    name: 'QualityAnalysisPie',
     props: {
       data: {
         type: Array,
         default: () => ([
-          { name: '0', value: 2100 },
-          { name: '02:00', value: 3200 },
-          { name: '03:00', value: 4479 },
-          { name: '04:00', value: 2100 },
-          { name: '05:00', value: 2100 },
-          { name: '06:00', value: 2100 },
-          { name: '07:00', value: 2100 },
-          { name: '08:00', value: 4689 },
-          { name: '09:00', value: 2100 },
-          { name: '10:00', value: 2100 },
-          { name: '11:00', value: 9864 },
-          { name: '12:00', value: 2100 },
-          { name: '13:00', value: 5780 },
-          { name: '14:00', value: 2100 },
-          { name: '15:00', value: 2100 },
-          { name: '16:00', value: 2467 },
-          { name: '17:00', value: 2100 },
-          { name: '18:00', value: 2100 },
-          { name: '19:00', value: 2100 },
-          { name: '20:00', value: 5789 },
-          { name: '21:00', value: 2100 },
-          { name: '22:00', value: 2100 },
-          { name: '23:00', value: 2100 },
-          { name: '24:00', value: 6789 },
+          {
+            name: '生活污水',
+            value: '25%',
+            child: [
+              { name: '生活污水市排1400', value: 8 },
+              { name: '生活污水新齐贤泵站', value: 8 },
+              { name: '生活污水安滨1600', value: 9 },
+            ],
+          },
+          {
+            name: '工业污水',
+            value: '75%',
+            child: [
+              { name: '工业污水市排', value: 40 },
+              { name: '工业污水区排', value: 35 },
+            ],
+          },
         ]),
       },
     },
@@ -182,7 +175,7 @@
 </script>
 
 <style lang="scss" scoped>
-  ._WaterLineChart_root {
+  ._QualityAnalysisPie_root {
     position: relative;
     width: 100%;
     height: 100%;

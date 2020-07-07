@@ -2,11 +2,13 @@
   <div class="water-root">
     <flow-water-statistics />
     <water-quality />
+    <quality-analysis />
   </div>
 </template>
 <script>
 import FlowWaterStatistics from './module/FlowWaterStatistics';
 import WaterQuality from './module/WaterQuality';
+import QualityAnalysis from './module/QualityAnalysis';
 
 export default {
   data() {
@@ -15,6 +17,7 @@ export default {
   components: {
     FlowWaterStatistics,
     WaterQuality,
+    QualityAnalysis,
   },
 }
 </script>
