@@ -314,7 +314,7 @@
   };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   ._WaterQualityBar_root {
     position: relative;
     width: 100%;
