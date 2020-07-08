@@ -16,11 +16,11 @@
     </div>
     <div class="chart-swapper">
       <div class="chart-item">
-        <water-quality-bar :legend="myLegend" />
+        <water-quality-bar :legend="myLegend" :data="list1" />
       </div>
       <div class="bar-line"></div>
       <div class="chart-item">
-        <water-quality-bar :legend="myLegend" />
+        <water-quality-bar :legend="myLegend" :data="list2" />
       </div>
     </div>
   </rect-box>
@@ -71,7 +71,11 @@
       },
       list2() {
         if (!this.myData || !Array.isArray(this.myData) || this.myData.length <= 3) return [];
-        return this.myData.slice(0, 3);
+        if (this.myData.length >= 6) {
+          return this.myData.slice(3, 6);
+        } else {
+          return this.myData.slice(3, this.myData.length);
+        }
       },
     },
     components: {
@@ -136,7 +140,7 @@
       align-items: center;
       margin-top: 10px;
       .chart-item {
-        width: 49%;
+        width: 50%;
         height: 100%;
       }
       .bar-line {
