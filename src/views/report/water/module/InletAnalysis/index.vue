@@ -184,7 +184,7 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   ._InletAnalysis_root {
     position: relative;
     width: 100%;
