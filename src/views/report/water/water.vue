@@ -1,5 +1,6 @@
 <template>
   <div class="water-root">
+    
     <flow-water-statistics />
     <water-quality />
     <quality-analysis />

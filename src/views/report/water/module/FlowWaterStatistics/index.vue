@@ -25,7 +25,7 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   ._FlowWaterStatistics_root {
     position: relative;
     .content {

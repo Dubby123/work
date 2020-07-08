@@ -1,24 +1,23 @@
 <template>
     <div>
-        <my-title title="当日进泥量"></my-title>
-        泥处理报表
-
+        <mud-statistics />
+        <inlet-analysis />
+         <effluent-analysis />
     </div>
 </template>
 <script>
-import MyTitle from '@/components/Title';
+import MudStatistics from './module/MudStatistics'
+import EffluentAnalysis from './module/EffluentAnalysis'
+import InletAnalysis from './module/InletAnalysis'
+
 export default {
-    name:'mud',
-    components:{ MyTitle },
-    data(){
-        return{
-            
-        }
+    name: 'mud',
+    components: { MudStatistics, EffluentAnalysis, InletAnalysis },
+    data() {
+        return {}
     },
-    created(){},
-    methods:{}
+    created() {},
+    methods: {},
 }
 </script>
-<style scoped lang='less'>
-
-</style>
+<style scoped lang="less"></style>

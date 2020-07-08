@@ -65,6 +65,9 @@
             right: 36,
             containLabel: true,
           },
+          length:{
+            
+          },
           xAxis: {
             type: 'value',
             splitLine: {
@@ -124,6 +127,7 @@
               data: [],
             }
           ],
+          
           series: [
             // 灰色背景
             {

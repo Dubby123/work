@@ -17,5 +17,6 @@ export default {
     width:100%;
     min-height: calc(100vh - 56px);
     margin-left: 15px;
+    max-width: 1200px;
 }
 </style>

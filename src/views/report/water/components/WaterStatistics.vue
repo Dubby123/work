@@ -67,7 +67,7 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   ._WaterStatistics_root {
     position: relative;
     width: 100%;

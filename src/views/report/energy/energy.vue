@@ -1,24 +1,23 @@
 <template>
     <div>
-        能源处理报表
-        <!-- <pictorial-bar></pictorial-bar> -->
-        <bar></bar>
-
+        <!-- <mud-statistics /> -->
+        <!-- <inlet-analysis /> -->
+         <!-- <effluent-analysis /> -->
     </div>
 </template>
 <script>
-// import pictorialBar from './components/pictorialBar'
-import bar from './components/bar'
+// import MudStatistics from './module/MudStatistics'
+// import EffluentAnalysis from './module/EffluentAnalysis'
+// import InletAnalysis from './module/InletAnalysis'
+
 export default {
-    name:'mud',
-    components:{bar},
-    data(){
-        return{}
+    name: 'mud',
+    components: { MudStatistics, InletAnalysis },
+    data() {
+        return {}
     },
-    created(){},
-    methods:{}
+    created() {},
+    methods: {},
 }
 </script>
-<style scoped lang='less'>
-
-</style>
+<style scoped lang="less"></style>

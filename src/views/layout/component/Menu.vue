@@ -79,7 +79,7 @@ export default {
 <style lang="less" scoped>
 .navigator-container {
     min-width: 208px;
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient( 
 		#0b2a92 , 
 		#070c4f );
