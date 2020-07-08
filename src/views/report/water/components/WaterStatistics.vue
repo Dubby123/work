@@ -13,7 +13,7 @@
         <div class="unit">{{data && data.unit}}</div>
         <div class="rate">
           <span class="name">同比</span>
-          <span class="num">{{data && data.rate}}%</span>
+          <span class="num">{{data && Math.abs(data.rate)}}%</span>
           <img v-if="data && data.rate < 0" src="../components/icon/down.png" alt="down">
           <img v-else src="../components/icon/up.png" alt="up">
         </div>
@@ -84,6 +84,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-shrink: 0;
         >img {
           max-width: 100%;
           max-height: 100%;
@@ -95,16 +96,19 @@
         flex-direction: column;
         justify-content: space-between;
         margin-left: 15px;
+        max-width: 155px;
         .name {
           font-size: 14px;
           color: #666666;
           text-align: left;
+          white-space: nowrap;
         }
 
         .value {
           font-size: 24px;
           color: #333333;
           text-align: left;
+          white-space: nowrap;
         }
       }
       .rate-div {
@@ -124,6 +128,7 @@
           justify-content: flex-end;
           align-items: flex-end;
           line-height: 1;
+          white-space: nowrap;
           .name {
             font-size: 12px;
             color: #666666;

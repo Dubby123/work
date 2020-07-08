@@ -28,7 +28,7 @@
     .content {
       margin-top: 20px;
       width: 100%;
-      height: 444px;
+      height: 360px;
       display: flex;
       justify-content: space-between;
       .panel-one {

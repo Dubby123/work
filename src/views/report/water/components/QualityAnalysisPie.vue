@@ -8,17 +8,23 @@
 <script>
   import echarts from 'echarts/lib/echarts';
   import 'echarts/lib/chart/pie';
+  import 'echarts/lib/component/title';
   import 'echarts/lib/component/tooltip';
+  import { doublePlate } from "../../../../utils";
 
   export default {
     name: 'QualityAnalysisPie',
     props: {
+      name: {
+        type: String,
+        default: '进水来源分析',
+      },
       data: {
         type: Array,
         default: () => ([
           {
             name: '生活污水',
-            value: '25%',
+            value: 25,
             child: [
               { name: '生活污水市排1400', value: 8 },
               { name: '生活污水新齐贤泵站', value: 8 },
@@ -27,13 +33,17 @@
           },
           {
             name: '工业污水',
-            value: '75%',
+            value: 75,
             child: [
               { name: '工业污水市排', value: 40 },
               { name: '工业污水区排', value: 35 },
             ],
           },
         ]),
+      },
+      colorIndex: {
+        type: Number,
+        default: 0,
       },
     },
     data() {
@@ -58,109 +68,114 @@
       upData() {
         this.initChart();
         if (!this.data || !Array.isArray(this.data)) return;
+        let name = this.name;
+        if (name.length > 4) {
+          name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
+        }
         const option = {
+          title: {
+            show: true,
+            text: name,
+            textVerticalAlign: 'middle',
+            left: 'center',
+            top: 120,
+            textStyle: {
+              fontSize: 16,
+              lineHeight: 18,
+              color: '#666666',
+            },
+          },
           tooltip: {
             show: true,
-            trigger: 'axis',
+            trigger: 'item',
             extraCssText: 'text-align: left;',
-          },
-          grid: {
-            // show: false,
-            top: 10,
-            bottom: 10,
-            left: 20,
-            right: 20,
-            containLabel: true,
-          },
-          xAxis: {
-            boundaryGap: false,
-            splitLine: {
-              show: false,
-            },
-            axisTick: {
-              show: false,
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#dcdbdb',
-              },
-            },
-            axisLabel: {
-              color: '#666666',
-              fontSize: 10,
-            },
-            data: [],
-          },
-          yAxis: {
-            type: 'value',
-            splitLine: {
-              show: false,
-            },
-            axisTick: {
-              show: false,
-            },
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: '#dcdbdb',
-              },
-            },
-            axisLabel: {
-              color: '#666666',
-              fontSize: 12,
-            },
           },
           series: [
             {
-              name: '当日进水量',
-              type: 'line',
+              name: this.name,
+              type: 'pie',
+              center: ['50%', 120],
+              radius: [55, 73],
+              hoverOffset: 5,
+              avoidLabelOverlap: false,
+              label: {
+                show: true,
+                position: 'outside',
+                fontSize: '12',
+                fontWeight: 'bold',
+                formatter: '{r|}{a|{b}}\n{b|{d}%}',
+                lineHeight: 17,
+                rich: {
+                  r: {
+                    width: 10,
+                    height: 10,
+                    backgroundColor: 'red',
+                  },
+                  a: {
+                    color: '#333333',
+                    fontSize: 12,
+                    align: 'center',
+                    padding: [0, 0, 0, 5],
+                  },
+                  b: {
+                    color: '#333333',
+                    fontSize: 11,
+                    align: 'center',
+                  },
+                },
+              },
+              labelLine: {
+                show: true,
+                length: 20,
+                length2: 20,
+              },
               data: [],
-              showSymbol: false,
-              itemStyle: {
-                color: '#ef6e18',
+              z: 3,
+            },
+            {
+              name: '明细',
+              type: 'pie',
+              center: ['50%', 120],
+              radius: [82, 100],
+              avoidLabelOverlap: false,
+              label: {
+                show: false,
               },
-              lineStyle: {
-                color: {
-                  type: 'linear',
-                  x: 0,
-                  y: 0,
-                  x2: 1,
-                  y2: 0,
-                  colorStops: [{
-                    offset: 0, color: '#fcc204',
-                  }, {
-                    offset: 1, color: '#ef6e18',
-                  }],
-                },
+              labelLine: {
+                show: false,
               },
-              areaStyle: {
-                color: {
-                  type: 'linear',
-                  x: 0,
-                  y: 0,
-                  x2: 0,
-                  y2: 1,
-                  colorStops: [{
-                    offset: 0, color: '#ef6e18',
-                  }, {
-                    offset: 1, color: 'rgba(252,194,4,0)',
-                  }],
-                },
-                opacity: 0.25,
-              },
-              smooth: true,
+              data: [],
             },
           ],
         };
-        const xData = [];
-        const seriesData = [];
-        this.data.forEach((it) => {
-          xData.push(it.name || '');
-          seriesData.push(it.value || '-');
+        const seriesData0 = [];
+        const seriesData1 = [];
+        const colors = doublePlate[this.colorIndex % doublePlate.length];
+        this.data.forEach(({ name, value, child }, m) => {
+          const cj = colors[m % colors.length];
+          seriesData0.push({
+            name,
+            value,
+            itemStyle: { color: cj.color },
+            label: {
+              rich: {
+                r: {
+                  backgroundColor: cj.color,
+                },
+              },
+            },
+          });
+          const childCj = cj.child;
+          child.forEach(({ name, value }, n) => {
+            seriesData1.push({
+              name,
+              value,
+              itemStyle: { color: childCj[n % childCj.length] },
+            });
+          });
         });
-        option.xAxis.data = xData;
-        option.series[0].data = seriesData;
+        option.series[0].data = seriesData0;
+        option.series[1].data = seriesData1;
         this.chart.clear();
         this.chart.setOption(option);
       },

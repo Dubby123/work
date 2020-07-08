@@ -3,12 +3,14 @@
     <flow-water-statistics />
     <water-quality />
     <quality-analysis />
+    <inlet-analysis />
   </div>
 </template>
 <script>
 import FlowWaterStatistics from './module/FlowWaterStatistics';
 import WaterQuality from './module/WaterQuality';
 import QualityAnalysis from './module/QualityAnalysis';
+import InletAnalysis from './module/InletAnalysis';
 
 export default {
   data() {
@@ -18,6 +20,7 @@ export default {
     FlowWaterStatistics,
     WaterQuality,
     QualityAnalysis,
+    InletAnalysis,
   },
 }
 </script>

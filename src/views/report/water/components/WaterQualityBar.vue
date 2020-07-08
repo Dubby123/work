@@ -74,9 +74,9 @@
             // show: false,
             top: 2,
             bottom: 2,
-            left: 20,
+            left: 118,
             right: 20,
-            containLabel: true,
+            // containLabel: true,
           },
           xAxis: {
             type: 'value',
