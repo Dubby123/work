@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     padding-left: 15px;
-
+    margin-top: 15px;
     &:before {
       content: ' ';
       position: absolute;
@@ -33,7 +33,6 @@
       background-color: #0066ff;
       border-radius: 2px;
     }
-
     .name {
       height: 100%;
       padding-right: 20px;
@@ -42,11 +41,12 @@
       display: flex;
       align-items: center;
     }
-
     .line {
       flex: 1;
-      height: 0;
-      border-top: dashed 1px #cccccc;
+      height: 1px;
+      background-image: linear-gradient(to right, #ccc 0%, #ccc 50%, transparent 50%);
+      background-size: 12px 1px;
+      background-repeat: repeat-x;
     }
   }
 </style>

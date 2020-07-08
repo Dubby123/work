@@ -188,7 +188,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scopedSlots>
+<style lang="less" scopedSlots>
 .navigator-container {
     min-width: 208px;
     height: 100%;

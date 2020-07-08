@@ -40,8 +40,8 @@ module.exports = {
     sourceMap: false,
     // css预设器配置项
     loaderOptions: {
-      // scss:{
-      //   prependData: `@import "@/styles/main.scss";`
+      // less:{
+      //   prependData: `@import "@/styles/main.less";`
       // }
     },
     // requireModuleExtension: false

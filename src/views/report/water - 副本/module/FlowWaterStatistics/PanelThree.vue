@@ -64,7 +64,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   ._PanelOne_root {
     position: relative;
     width: 393px;
