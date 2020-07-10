@@ -86,7 +86,17 @@ export default {
     float: left;
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 8000;
+    position: relative;
+    &::after{
+        display: inline-block;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        content: '';
+        width:200px;
+        height: 297px;
+        background: url('../../../assets/imgs/cebian.png') no-repeat;
+    }
 }
 .navigator_header {
     width: 100%;
@@ -147,46 +157,6 @@ export default {
     // background: url('../../assets/imgs/icon-navigator.png') no-repeat center center;
     vertical-align: middle;
     margin-right: 10px;
-    &.icon-home {
-        background-position: 0px 0px;
-    }
-    &.icon-user {
-        background-position: 0px -40px;
-    }
-    &.icon-auth {
-        background-position: 0px -82px;
-    }
-    &.icon-message {
-        background-position: 0px -122px;
-    }
-    &.icon-file {
-        background-position: 0px -164px;
-    }
-    &.icon-process {
-        background-position: 0px -202px;
-    }
-    &.icon-watermark {
-        background-position: 0px -244px;
-    }
-    &.icon-log {
-        background-position: 0px -290px;
-    }
-    &.icon-store {
-        background-position: 0px -332px;
-    }
-    &.icon-gateway {
-        background-position: 0px -374px;
-    }
-    &.icon-port {
-        background-position: 0px -415px;
-    }
-    &.icon-software {
-        // background-position: 0px -415px;
-        // background: url('../../assets/imgs/icon-software.png') no-repeat center center;
-    }
-    &.icon_expand {
-        background-position: -78px -0px;
-        margin-right: 0px;
-    }
+  
 }
 </style>

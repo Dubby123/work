@@ -40,7 +40,7 @@ export default {
                 },
             ],
         },
-       
+
         colorIndex: {
             type: Number,
             default: 0,
@@ -86,9 +86,18 @@ export default {
                         color: '#666666',
                     },
                 },
+                // legend: {
+                //     orient: 'vertical',
+                //     left: 10,
+
+                // },
                 legend: {
+                    itemWidth: 10,
+                    itemHeight: 10,
                     orient: 'vertical',
                     left: 10,
+                    bottom: 0,
+                    icon: 'rect',
                 },
                 tooltip: {
                     show: true,

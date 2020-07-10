@@ -1,35 +1,40 @@
 <template>
     <div id="layout-warp">
-        <layoutMenu class="left"/>
+        <layoutMenu class="left" />
         <div class="right">
-            <layoutHeader/>
-            <layoutMain/>
-        </div>
+            <layoutHeader />
+            <!-- <div>
+                <span>nihao</span>
+                <Breadcrumb />
+            </div> -->
 
+            <layoutMain />
+        </div>
     </div>
 </template>
 
 <script>
-  import layoutHeader from './component/Header'
-  import layoutMain from './component/Main'
-  import layoutMenu from './component/Menu.vue'
- 
-  export default {
-    name: "index",
+import layoutHeader from './component/Header'
+import layoutMain from './component/Main'
+import layoutMenu from './component/Menu.vue'
+import Breadcrumb from './component/Breadcrumb.vue'
+export default {
+    name: 'index',
     components: {
-      layoutHeader,
-      layoutMain,
-      layoutMenu
-    }
-  }
+        layoutHeader,
+        layoutMain,
+        layoutMenu,
+        Breadcrumb,
+    },
+}
 </script>
 
-<style scoped lang='less'>
-    #layout-warp{
-        display: flex;
+<style scoped lang="less">
+#layout-warp {
+    display: flex;
 
-        .right{
-          flex:1
-        }
+    .right {
+        flex: 1;
     }
+}
 </style>

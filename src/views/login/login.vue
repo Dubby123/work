@@ -86,7 +86,7 @@ export default {
         return {
             loginForm: {
                 username: 'admin',
-                password: 'admin',
+                password: '1111',
             },
             status: '',
             loading: false,
@@ -147,9 +147,9 @@ export default {
         //登录
         login() {
             const data = {
-                 username: this.loginForm.username,
-                password: this.loginForm.username,
-                remember:this.remember
+                "username": this.loginForm.username,
+                "password": this.loginForm.password,
+                "rememberMe":this.remember
             }
             this.$store
                 .dispatch('login/login', data)

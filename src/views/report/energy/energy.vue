@@ -1,18 +1,15 @@
 <template>
     <div>
-        <!-- <mud-statistics /> -->
-        <!-- <inlet-analysis /> -->
-         <!-- <effluent-analysis /> -->
+        <energy-statistics />
+         <medicine-analysis />
     </div>
 </template>
 <script>
-// import MudStatistics from './module/MudStatistics'
-// import EffluentAnalysis from './module/EffluentAnalysis'
-// import InletAnalysis from './module/InletAnalysis'
-
+import EnergyStatistics from './module/EnergyStatistics'
+import MedicineAnalysis from './module/MedicineAnalysis'
 export default {
     name: 'mud',
-    components: { MudStatistics, InletAnalysis },
+    components: { MedicineAnalysis, EnergyStatistics },
     data() {
         return {}
     },

@@ -1,6 +1,6 @@
 <!-- 流量水质统计 -->
 <template>
-    <div class="_MudStatistics_root">
+    <div class="_InletAnalysis_root">
         <sub-title name="回流废水统计" />
         <div class="content">
             <rect-box>
@@ -20,7 +20,7 @@ import MudTop from '../../components/MudTop'
 import AnalysisPie from '../../components/AnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
 export default {
-    name: 'MudStatistics',
+    name: 'InletAnalysis',
     components: {
         MudTop,
         AnalysisPie,
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._MudStatistics_root {
+._InletAnalysis_root {
     position: relative;
     .content {
         margin-top: 20px;

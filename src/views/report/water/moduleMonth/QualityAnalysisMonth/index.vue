@@ -1,25 +1,23 @@
 <!-- 流量水质分析 -->
 <template>
   <div class="_QualityAnalysis_root">
-    <sub-title name="流量水质分析" />
+    <sub-title name="当月进水来源分析" />
     <div class="content">
       <panel-one class="panel-one" />
       <panel-two class="panel-two" />
     </div>
-    <water-quality/>
   </div>
 </template>
 
 <script>
   import PanelOne from './PanelOne'
   import PanelTwo from './PanelTwo'
-  import WaterQuality from './WaterQuality'
+
   export default {
     name: 'QualityAnalysis',
     components: {
       PanelOne,
       PanelTwo,
-      WaterQuality
     },
   };
 </script>

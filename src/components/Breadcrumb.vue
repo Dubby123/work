@@ -16,7 +16,7 @@
 
 <script>
 export default {
-    name: 'breadcrumb',
+    name: 'Navbar',
     data() {
         return {
             levelList: [],
@@ -24,12 +24,12 @@ export default {
     },
     watch: {
         $route: function(newVal,) {
-            console.log('newVal', newVal.matched)
-            this.routerList = newVal.matched
+            this.routerList = newVal.meta.routeList
         },
     },
     created() {
         this.routerList = this.$route.matched
+        console.log(' this.routerList',this.routerList)
     },
   
 }

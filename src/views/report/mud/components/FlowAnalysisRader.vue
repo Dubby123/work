@@ -2,6 +2,7 @@
 <template>
     <div class="_QualityAnalysisPie_root">
         <div class="chart-root" ref="chart_dom"></div>
+ 
     </div>
 </template>
 <script>
@@ -133,10 +134,8 @@ export default {
                     splitNumber: 3,
                     name: {
                         textStyle: {
-                            color: '#fff',
-                            backgroundColor: '#999',
-                            borderRadius: 3,
-                            padding: [5, 5],
+                            color: '#666666',
+
                         },
                     },
                     axisLine: {
@@ -185,14 +184,18 @@ export default {
                     {
                         name: '风险评估',
                         type: 'radar',
-                        symbol: 'circle', // 拐点的样式，还可以取值
+                        symbol: 'emptyCircle', // 拐点的样式，还可以取值
                         symbolSize: 10, // 拐点的大小
+                        borderType:'dashed',
                         itemStyle: {
                             normal: {
-                                color: 'transparent',
-                                borderColor: '#000000',
+                                color: '#ffffff',
+                                borderColor: '#228ee1',
                                 borderWidth: 1,
+                                background: '#ffffff'
                             },
+                             opacity: 0.2
+                             
                         },
                         areaStyle: {
                             normal: {
@@ -217,6 +220,7 @@ export default {
                                                 {
                                                     offset: 1,
                                                     color: '#228ee1 ',
+                                                    
                                                 },
                                             ] //数组, 用于配置颜色的渐变过程. 每一项为一个对象, 包含offset和color两个参数. offset的范围是0 ~ 1, 用于表示位置
                                         ),
@@ -251,6 +255,7 @@ export default {
         position: relative;
         width: 100%;
         height: 100%;
+      
     }
 }
 </style>

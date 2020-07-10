@@ -7,7 +7,8 @@
       <panel-two class="item-swapper" />
       <panel-three class="item-swapper" />
     </div>
-   <inlet-analysis />
+     <water-quality/>
+     <inlet-analysis/>
   </div>
 </template>
 
@@ -15,14 +16,15 @@
   import PanelOne from './PanelOne'
   import PanelTwo from './PanelTwo'
   import PanelThree from './PanelThree'
+  import WaterQuality from './WaterQuality'
    import InletAnalysis from './InletAnalysis'
-
   export default {
     name: 'FlowWaterStatistics',
     components: {
       PanelOne,
       PanelTwo,
       PanelThree,
+      WaterQuality,
       InletAnalysis
     },
   };

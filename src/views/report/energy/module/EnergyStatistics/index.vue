@@ -1,7 +1,7 @@
 <!-- 流量水质统计 -->
 <template>
-    <div class="_MudStatistics_root">
-        <sub-title name="当日进泥量" />
+    <div class="_EnergyStatistics_root">
+        <sub-title name="当日电耗统计" />
         <div class="content">
             <rect-box>
                 <engrgy-top :data="myData" />
@@ -20,7 +20,7 @@ import EngrgyTop from '../../components/EngrgyTop'
 import FlowAnalysisPie from '../../components/FlowAnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
 export default {
-    name: 'MudStatistics',
+    name: 'EnergyStatistics',
     components: {
         EngrgyTop,
         FlowAnalysisPie,
@@ -29,15 +29,15 @@ export default {
     data() {
         return {
             myData: {
-                name: '进泥流量',
+                name: '累计耗电量',
                 value: 321256,
-                unit: '㎡',
+                unit: '单位:MWH',
                 rate: -8,
             },
             myData1: {
-                name: '进泥浓度',
+                name: '单位耗电量',
                 value: 1541,
-                unit: 'MWH/吨',
+                unit: '单位:MWH',
                 rate: -8,
             },
         }
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._MudStatistics_root {
+._EnergyStatistics_root {
     position: relative;
     .content {
         margin-top: 20px;

@@ -1,6 +1,6 @@
 <!-- QualityAnalysisPie -->
 <template>
-    <div class="_QualityAnalysisPie_root">
+    <div class="_FlowAnalysisRader_root">
         <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>
@@ -12,7 +12,7 @@ import 'echarts/lib/component/tooltip'
 // import { doublePlate } from '../../../../utils'
 
 export default {
-    name: 'QualityAnalysisPie',
+    name: 'FlowAnalysisRader',
     props: {
         name: {
             type: String,
@@ -133,10 +133,7 @@ export default {
                     splitNumber: 3,
                     name: {
                         textStyle: {
-                            color: '#fff',
-                            backgroundColor: '#999',
-                            borderRadius: 3,
-                            padding: [5, 5],
+                            color: '#999',
                         },
                     },
                     axisLine: {
@@ -185,12 +182,12 @@ export default {
                     {
                         name: '风险评估',
                         type: 'radar',
-                        symbol: 'circle', // 拐点的样式，还可以取值
+                        symbol: 'emptyCircle', // 拐点的样式，还可以取值
                         symbolSize: 10, // 拐点的大小
                         itemStyle: {
                             normal: {
                                 color: 'transparent',
-                                borderColor: '#000000',
+                                borderColor: '#eb38c9',
                                 borderWidth: 1,
                             },
                         },
@@ -212,11 +209,15 @@ export default {
                                             [
                                                 {
                                                     offset: 0,
-                                                    color: '#aedbfe ',
+                                                    color: '#06A4FF ',
+                                                },
+                                                 {
+                                                    offset: 0.5,
+                                                    color: '#3E80FF ',
                                                 },
                                                 {
                                                     offset: 1,
-                                                    color: '#228ee1 ',
+                                                    color: '#755CFF ',
                                                 },
                                             ] //数组, 用于配置颜色的渐变过程. 每一项为一个对象, 包含offset和color两个参数. offset的范围是0 ~ 1, 用于表示位置
                                         ),
@@ -243,7 +244,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._QualityAnalysisPie_root {
+._FlowAnalysisRader_root {
     position: relative;
     width: 100%;
     height: 100%;

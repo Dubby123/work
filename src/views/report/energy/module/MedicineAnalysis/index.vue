@@ -1,29 +1,24 @@
 <!-- 流量水质统计 -->
 <template>
-    <div class="_EffluentAnalysis_root">
-        <sub-title name="回流废水统计" />
+    <div class="_MedicineAnalysis_root">
+        <sub-title name="当日药耗统计" />
         <div class="content">
             <rect-box>
-                <mud-top :data="myData" />
-                <analysis-pie :data="pieData" />
+                <analysis-gallery />
             </rect-box>
             <rect-box>
-                <mud-top  :data="myData1"/>
-                <analysis-pie :data="pieData1"  />
+                <analysis-gallery />
             </rect-box>
         </div>
     </div>
 </template>
 
 <script>
-import MudTop from '../../components/MudTop'
-import AnalysisPie from '../../components/AnalysisPie'
-
+import AnalysisGallery from '../../components/AnalysisGallery'
 export default {
-    name: 'EffluentAnalysis',
+    name: 'MedicineAnalysis',
     components: {
-        MudTop,
-        AnalysisPie,
+        AnalysisGallery,
     },
     data() {
         return {
@@ -48,7 +43,7 @@ export default {
                     name: '临时堆场污泥折算量',
                     value: 20002,
                 },
-                 {
+                {
                     name: '浓缩污泥折算量',
                     value: 60002,
                 },
@@ -73,12 +68,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._EffluentAnalysis_root {
+._MedicineAnalysis_root {
     position: relative;
     .content {
         margin-top: 20px;
         width: 100%;
-        height: 444px;
+        height: 300px;
         display: flex;
         justify-content: space-between;
         .item-swapper {
