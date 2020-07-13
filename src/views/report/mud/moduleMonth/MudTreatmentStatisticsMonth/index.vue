@@ -1,52 +1,63 @@
-<!-- 流量水质统计 -->
 <template>
-  <div class="_InletAnalysis_root">
-    <sub-title name="回流废水统计" />
+  <div class="_MudStatistics_root">
+    <sub-title name="当月进泥量" />
     <div class="content">
       <rect-box>
         <div class="title_panel">
-          <span>回流废水流量</span>
+          <span>泥饼量</span>
           <span>
             <span class="right">单位:吨</span>
             <year-but />
           </span>
         </div>
-        <flow-analysis-bar class="main_panel" />
+          <comparison-bar class="main_panel"  />
       </rect-box>
     </div>
     <div class="content">
       <rect-box>
         <div class="title_panel">
-          <span>回流废水浓度</span>
+          <span>处置量</span>
           <span>
-            <span class="right">单位:g/L</span>
+            <span class="right">单位:吨</span>
             <year-but />
           </span>
         </div>
-        <flow-analysis-line class="main_panel" />
+        <flowAnalysis-bar :color="color" :data="data"  class="main_panel"/>
       </rect-box>
     </div>
   </div>
 </template>
 
 <script>
+import ComparisonBar from "../../components/ComparisonBar";
 import FlowAnalysisBar from "../../components/FlowAnalysisBar";
-import FlowAnalysisLine from "../../components/FlowAnalysisLine";
 export default {
-  name: "InletAnalysis",
-  components: {
-    FlowAnalysisBar,
-    FlowAnalysisLine
-  },
-
+  name: "MudTreatmentStatisticsMonth",
+  components: { ComparisonBar, FlowAnalysisBar },
   data() {
-    return {};
+    return {
+      color: ["#6fbcf8", "#ffaa47", "#ff6f00",],
+      data: [
+        {
+          name: "清能",
+          value: [220, 290, 330, 310, 182, 191, 234]
+        },
+        {
+          name: "环兴",
+          value: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+          name: "泰普",
+          value: [220, 182, 191, 234, 290, 330, 330]
+        }
+      ]
+    };
   }
 };
 </script>
 
 <style lang="less" scoped>
-._InletAnalysis_root {
+._MudStatistics_root {
   position: relative;
   .content {
     margin-top: 20px;
@@ -67,4 +78,5 @@ export default {
     height: 310px;
   }
 }
+
 </style>

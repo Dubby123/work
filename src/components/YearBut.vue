@@ -5,10 +5,10 @@
                 size="mini"
                 prefix-icon="none"
                 v-model="year"
-                type="month"
+                type="year"
                 clear-icon="none"
                 @change="changTime"
-                value-format='yyyy-MM'
+                value-format='yyyy'
             >
             </el-date-picker>
         </div>
@@ -21,7 +21,8 @@ export default {
     name: 'MonthBut',
     data() {
         return {
-            month: moment(new Date()).format('yyyy-MM'),
+            
+            year: moment(new Date()).format('yyyy年'),
         }
     },
     methods: {
@@ -37,6 +38,7 @@ export default {
 ._MonthBut_root {
     width: 81px;
     height: 28px;
+    display: inline-block;
     .content /deep/ .el-input {
          width: 100%;
         .el-input__inner {
