@@ -9,19 +9,48 @@
                 <el-dropdown-item command="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
-        <el-dialog title="修改密码" :visible.sync="dialogFormVisible" append-to-body id="mask-box" width="600px">
-            <el-form :model="form" :rules="rules" ref="form" label-width="120px" class="table-form table-form-pass">
+        <el-dialog
+            title="修改密码"
+            :visible.sync="dialogFormVisible"
+            append-to-body
+            id="mask-box"
+            width="600px"
+        >
+            <el-form
+                :model="form"
+                :rules="rules"
+                ref="form"
+                label-width="120px"
+                class="table-form table-form-pass"
+            >
                 <el-form-item label="用户名:">
-                    <el-input v-model="getUserName" autocomplete="off" type="text" :disabled="true"></el-input>
+                    <el-input
+                        v-model="getUserName"
+                        autocomplete="off"
+                        type="text"
+                        :disabled="true"
+                    ></el-input>
                 </el-form-item>
                 <el-form-item label="旧密码:" prop="pass">
-                    <el-input v-model="form.pass" autocomplete="off" type="password"></el-input>
+                    <el-input
+                        v-model="form.pass"
+                        autocomplete="off"
+                        type="password"
+                    ></el-input>
                 </el-form-item>
                 <el-form-item label="新密码:" prop="newpass">
-                    <el-input v-model="form.newpass" autocomplete="off" type="password"></el-input>
+                    <el-input
+                        v-model="form.newpass"
+                        autocomplete="off"
+                        type="password"
+                    ></el-input>
                 </el-form-item>
                 <el-form-item label="确认密码:" prop="checkpass">
-                    <el-input v-model="form.checkpass" autocomplete="off" type="password"></el-input>
+                    <el-input
+                        v-model="form.checkpass"
+                        autocomplete="off"
+                        type="password"
+                    ></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -69,19 +98,32 @@ export default {
                 name: '',
                 pass: '',
                 newpass: '',
-                checkpass: ''
+                checkpass: '',
             },
             rules: {
-                pass: [{ required: true, trigger: 'blur', message: '请输入密码' }],
+                pass: [
+                    { required: true, trigger: 'blur', message: '请输入密码' },
+                ],
                 newpass: [
-                    { required: true, validator: validatePass, trigger: 'blur' },
+                    {
+                        required: true,
+                        validator: validatePass,
+                        trigger: 'blur',
+                    },
                     {
                         pattern: /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{6,24}$/,
-                        message: '密码至少包含数字、大小写字母、特殊符号中的三种，6-24个字符，密码不能包含中文'
-                    }
+                        message:
+                            '密码至少包含数字、大小写字母、特殊符号中的三种，6-24个字符，密码不能包含中文',
+                    },
                 ],
-                checkpass: [{ required: true, validator: validatePass2, trigger: 'blur' }]
-            }
+                checkpass: [
+                    {
+                        required: true,
+                        validator: validatePass2,
+                        trigger: 'blur',
+                    },
+                ],
+            },
         }
     },
     methods: {
@@ -93,18 +135,21 @@ export default {
             }
         },
         logout() {
-            this.$store.dispatch('login/logout').then(res => {
+            this.$store.dispatch('login/logout').then((res) => {
                 if (res.status === Const.STATUS.SUCCESS) {
                     //remove cache
                     BusinessUtil.CallbackHandler(res, res)
                     localStorage.removeItem('vuex')
                     if (res.data) {
-                        axios.post(res.data).then(res => {
+                        axios.post(res.data).then((res) => {
                             res.status
-                                ? this.$router.push({ path: '/', replace: true })
+                                ? this.$router.push({
+                                      path: '/',
+                                      replace: true,
+                                  })
                                 : Message.error({
                                       showClose: true,
-                                      message: res.message
+                                      message: res.message,
                                   })
                         })
                     } else {
@@ -117,37 +162,47 @@ export default {
                 } else {
                     Message.error({
                         showClose: true,
-                        message: res.message
+                        message: res.message,
                     })
                 }
             })
         },
         updatePass() {
-            this.$refs['form'].validate(valid => {
+            this.$refs['form'].validate((valid) => {
                 if (!valid) {
                     return false
                 }
-                this.$store.dispatch('login/getPasswordEncrypt').then(res => {
+                this.$store.dispatch('login/getPasswordEncrypt').then((res) => {
                     if (res.status === Const.STATUS.SUCCESS) {
                         let data = {
                             userName: this.getUserName,
                             oldPassword: this.form.pass,
-                            newPassword: this.form.newpass
+                            newPassword: this.form.newpass,
                         }
                         if (res.data === 1) {
-                            this.$store.dispatch('login/getPublicKey').then(response => {
-                                if (response.status === Const.STATUS.SUCCESS) {
-                                    let publicKey = response.data
-                                    data.oldPassword = JSEncrypt.encrypt(data.oldPassword, publicKey)
-                                    data.newPassword = JSEncrypt.encrypt(data.newPassword, publicKey)
-                                    this.updatePassHandler(data)
-                                } else {
-                                    Message.error({
-                                        showClose: true,
-                                        message: res.message
-                                    })
-                                }
-                            })
+                            this.$store
+                                .dispatch('login/getPublicKey')
+                                .then((response) => {
+                                    if (
+                                        response.status === Const.STATUS.SUCCESS
+                                    ) {
+                                        let publicKey = response.data
+                                        data.oldPassword = JSEncrypt.encrypt(
+                                            data.oldPassword,
+                                            publicKey
+                                        )
+                                        data.newPassword = JSEncrypt.encrypt(
+                                            data.newPassword,
+                                            publicKey
+                                        )
+                                        this.updatePassHandler(data)
+                                    } else {
+                                        Message.error({
+                                            showClose: true,
+                                            message: res.message,
+                                        })
+                                    }
+                                })
                         } else {
                             this.updatePassHandler(data)
                         }
@@ -157,31 +212,33 @@ export default {
             })
         },
         updatePassHandler(data) {
-            this.$store.dispatch('login/updatePass', data).then(res => {
+            this.$store.dispatch('login/updatePass', data).then((res) => {
                 if (res.status === Const.STATUS.SUCCESS) {
                     Message.success({
                         showClose: true,
-                        message: res.message
+                        message: res.message,
                     })
                     this.dialogFormVisible = false
                 } else {
                     Message.error({
                         showClose: true,
-                        message: res.message
+                        message: res.message,
                     })
                 }
             })
-        }
-    }
+        },
+    },
 }
 </script>
-<style scoped lang='less'>
-   .header{
-       height: 56px;
-       line-height: 56px;
-       background-color: #ffffff;
-       margin-bottom: 20px;
-       text-align: right;
-   }
-
+<style scoped lang="less">
+.header {
+    height: 56px;
+    line-height: 56px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    text-align: right;
+}
+.el-header {
+   
+}
 </style>

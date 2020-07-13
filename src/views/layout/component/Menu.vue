@@ -1,13 +1,13 @@
 <template>
     <div class="navigator-container" ref="navigator">
         <div class="navigator_header">
-                绍兴智慧水处理平台
-            </div>
+            绍兴智慧水处理平台
+        </div>
         <el-menu
             ref="menu"
             class="el-menu-vertical"
             :default-active="this.$route.path"
-             background-color="transparent"
+            background-color="transparent"
             active-text-color="#fff"
             text-color="rgba(255,255,255,0.85)"
             router
@@ -18,13 +18,16 @@
                     :index="item.context"
                     :key="index"
                 >
-                    <i :class="'icon icon-' + item.icon"></i>
+                    <!-- <i :class="'icon icon-' + item.icon"></i> -->
+                       <i class="el-icon-document"></i>
                     <span slot="title">{{ item.name }}</span>
                 </el-menu-item>
                 <el-submenu :index="item.context" :key="index" v-else>
                     <template slot="title">
-                        <i :class="'icon icon-' + item.icon"></i
-                        ><span slot="title">{{ item.name }}</span>
+                        <!-- <i :class="'icon icon-' + item.icon"></i
+                        > -->
+                          <i class="el-icon-document"></i>
+                        <span slot="title">{{ item.name }}</span>
                     </template>
                     <template v-for="(item, index) in item.childList">
                         <el-menu-item
@@ -53,14 +56,14 @@
 
 <script>
 // import { mapState } from 'vuex'
-import CONST  from '@/common/const'
+import CONST from '@/common/const'
 export default {
     name: 'Navigator',
     // props: {
     //     navList: Array
     // },
     created() {
-        console.log('NAV_LIST_SOFTWARE',CONST.NAV_LIST_SOFTWARE)
+        console.log('NAV_LIST_SOFTWARE', CONST.NAV_LIST_SOFTWARE)
     },
     mounted() {
         // if (this.isCollapse) {
@@ -80,20 +83,18 @@ export default {
 .navigator-container {
     min-width: 208px;
     min-height: 100vh;
-    background-image: linear-gradient( 
-		#0b2a92 , 
-		#070c4f );
+    background-image: linear-gradient(#0b2a92, #070c4f);
     float: left;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    &::after{
+    &::after {
         display: inline-block;
         position: absolute;
         bottom: 20px;
         left: 0;
         content: '';
-        width:200px;
+        width: 200px;
         height: 297px;
         background: url('../../../assets/imgs/cebian.png') no-repeat;
     }
@@ -115,8 +116,7 @@ export default {
     }
 }
 .el-menu-vertical {
-     min-width: 208px; 
-    float: left;
+    min-width: 208px;
     border-right: none;
     .el-menu-item {
         height: 56px;
@@ -130,33 +130,5 @@ export default {
             opacity: 0.8;
         }
     }
-    .el-submenu {
-        .el-submenu__title {
-            height: 56px;
-            line-height: 56px;
-            font-size: 12px;
-            // padding: 0 20px 0 15px !important;
-            border-left: 5px solid #0066ff;
-            &.is-active {
-                font-weight: bold;
-            }
-            i {
-                color: #fff;
-            }
-        }
-        &.is-active .el-submenu__title {
-            font-weight: bold;
-            color: #fff;
-        }
-    }
-}
-.icon {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    // background: url('../../assets/imgs/icon-navigator.png') no-repeat center center;
-    vertical-align: middle;
-    margin-right: 10px;
-  
 }
 </style>

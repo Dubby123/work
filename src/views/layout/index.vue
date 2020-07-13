@@ -1,16 +1,12 @@
 <template>
-    <div id="layout-warp">
-        <layoutMenu class="left" />
-        <div class="right">
-            <layoutHeader />
-            <!-- <div>
-                <span>nihao</span>
-                <Breadcrumb />
-            </div> -->
-
-            <layoutMain />
-        </div>
-    </div>
+    <el-container id="layout-warp">
+        <el-aside width="208px"> <layoutMenu class="left"/></el-aside>
+        <el-container>
+            <el-header  > <layoutHeader /></el-header>
+            <div><Breadcrumb/></div>
+            <el-main> <layoutMain /></el-main>
+        </el-container>
+    </el-container>
 </template>
 
 <script>
@@ -30,11 +26,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-#layout-warp {
-    display: flex;
-
-    .right {
-        flex: 1;
-    }
+.el-header{
+    padding: 0;
 }
+
 </style>

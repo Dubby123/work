@@ -1,9 +1,6 @@
  <template>
     <div class="water-root">
         <time-button @triggerTime="showType" />
-        <Breadcrumb/>
-
-
         <div v-if="type === 'date'">
             <flow-water-statistics />
             <quality-analysis />

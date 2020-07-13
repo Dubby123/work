@@ -76,9 +76,9 @@ export default {
             //   name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
             // }
             const option = {
-                title: {
-                    text: '合计平均',
-                },
+                // title: {
+                //     text: '合计平均',
+                // },
                 tooltip: {
                     show: true,
                     trigger: 'item',
