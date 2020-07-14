@@ -49,13 +49,11 @@ export default {
     padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
-
     .chart {
       margin-top: 30px;
-      width: 100%;
+      width: 80%;
       height: 200px;
     }
-
     .item-last {
       align-self: flex-end;
     }

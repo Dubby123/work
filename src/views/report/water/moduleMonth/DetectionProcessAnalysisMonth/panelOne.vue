@@ -8,21 +8,23 @@
             </div>
             <month-but @handleTime="selectTime" />
         </div>
-        <div class="chart-root" ref="sequential_analysis"></div>
+        <double-contrast-line class='chart_content'/>
+      
     </rect-box>
 </template>
 
 <script>
+import DoubleContrastLine from '../../components/DoubleContrastLine'
 export default {
     data() {
         return {}
     },
+    components:{DoubleContrastLine},
     methods: {
         selectTime() {},
     },
 }
 </script>
-
 <style lang="less" scoped>
 ._DetectionProcessAnalysis_root {
     position: relative;
@@ -43,7 +45,7 @@ export default {
             margin-right: 20px;
         }
     }
-    .chart-root {
+    .chart_content {
         position: relative;
         height: 80%;
     }

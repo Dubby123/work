@@ -3,7 +3,7 @@
   <rect-box class="_PanelOne_root">
     <water-statistics :data="myData1" />
     <div class="chart">
-      <water-line-chart />
+      <quarter-pie/>
     </div>
     <water-statistics class="item-last" :data="myData2" />
   </rect-box>
@@ -11,7 +11,7 @@
 
 <script>
 import WaterStatistics from '../../components/WaterStatistics'
-import WaterLineChart from '../../components/WaterLineChart'
+import QuarterPie from '../../components/QuarterPie'
 import icon1 from "../../components/icon/icon-1-1.png";
 import icon2 from "../../components/icon/icon-1-2.png";
 
@@ -19,7 +19,7 @@ export default {
   name: 'PanelOne',
   components: {
     WaterStatistics,
-    WaterLineChart,
+    QuarterPie,
   },
   data() {
     return {
@@ -44,18 +44,17 @@ export default {
 <style lang="less" scoped>
   ._PanelOne_root {
     position: relative;
-    width: 393px;
+    width:33%;
     height: 444px;
     padding: 20px 0;
     display: flex;
-    flex-wrap: wrap;
-
+    flex-direction: column;
+    justify-content: space-between;
     .chart {
       margin-top: 30px;
       width: 100%;
-      height: 200px;
+      height: 250px;
     }
-
     .item-last {
       align-self: flex-end;
     }

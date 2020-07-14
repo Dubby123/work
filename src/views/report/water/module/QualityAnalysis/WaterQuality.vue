@@ -4,12 +4,18 @@
         <div class="title-swapper">
             <div class="legend-swapper">
                 <span class="name">进水水质分析</span>
-                <span class="type">分析类别</span>
+                <span><span class="type">分析类别</span><my-select /></span>
             </div>
             <span class="unit">单位:mg/L</span>
         </div>
         <div class="chart-swapper">
-            <div class="chart-root" ref="chart_dom"></div>
+            <div class="chart-root">
+                <my-echarts
+                    id="'InletAnalysis'"
+                    :options="echartsOptions"
+                ></my-echarts>
+            </div>
+            <!-- <div class="chart-root" ref="chart_dom"></div> -->
         </div>
     </rect-box>
 </template>
@@ -33,13 +39,8 @@ export default {
             ],
         }
     },
-    watch: {
-        myData() {
-            this.upData()
-        },
-    },
-    mounted() {
-        this.upData()
+    created() {
+        this.echartsOptions = this.optionsCreate()
     },
     methods: {
         initChart() {
@@ -47,9 +48,7 @@ export default {
                 this.chart = echarts.init(this.$refs.chart_dom)
             }
         },
-        upData() {
-            this.initChart()
-            if (!this.myData || !Array.isArray(this.myData)) return
+        optionsCreate() {
             const option = {
                 tooltip: {
                     show: true,
@@ -64,7 +63,7 @@ export default {
                     right: 36,
                     containLabel: true,
                 },
-              
+
                 xAxis: {
                     type: 'value',
                     splitLine: {
@@ -177,15 +176,8 @@ export default {
             option.yAxis[1].data = yData1
             option.series[0].data = seriesData.map(() => maxData)
             option.series[1].data = seriesData
-            this.chart.clear()
-            this.chart.setOption(option)
+            return option
         },
-    },
-    beforeDestroy() {
-        if (this.chart) {
-            this.chart.dispose()
-            this.chart = null
-        }
     },
 }
 </script>
@@ -216,6 +208,7 @@ export default {
             .type {
                 font-size: 14px;
                 color: #999999;
+                margin-right: 10px;
             }
         }
         .unit {

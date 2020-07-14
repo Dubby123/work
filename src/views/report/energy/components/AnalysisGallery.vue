@@ -135,7 +135,7 @@ export default {
                     {
                         name: 'hill',
                         type: 'pictorialBar',
-                        barCategoryGap: '0%',
+                        barMinWidth: 91,
                         symbol:
                             'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
                         // barWidth: '150%',
@@ -144,7 +144,7 @@ export default {
                             position: 'top',
                             distance: 15,
                             color: '#333333',
-                            fontSize: 20,
+                            fontSize: 16,
                         },
                         itemStyle: {
                             normal: {
@@ -175,14 +175,15 @@ export default {
                                 opacity: 1,
                             },
                         },
-                        data: [22.56, 14.28, 12.45],
+                        data: [22.56, 14.28, 12.45, 14.28, 12.45],
                         z: 10,
                     },
                     {
                         name: 'hill',
                         type: 'pictorialBar',
-                        barCategoryGap: '-30%',
-                        barGap: '-40%' /*这里设置包含关系，只需要这一句话*/,
+                        barMinWidth: 91,
+                        barCategoryGap: '0%',
+                        barGap: '-100%',
                         symbol:
                             'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
                         label: {
@@ -191,10 +192,10 @@ export default {
                             distance: 5,
                             color: '#333333',
                             // 			fontWeight: 'bolder',
-                            fontSize: 20,
+                            fontSize: 16,
                         },
                         itemStyle: {
-                            borderColor: '#04DFDE',
+                            borderColor: 'red',
                             borderWidth: 1,
                             normal: {
                                 color: {
@@ -206,7 +207,7 @@ export default {
                                     colorStops: [
                                         {
                                             offset: 0,
-                                            color: '#51ADFC', //  0%  处的颜色
+                                            color: 'red', //  0%  处的颜色
                                         },
                                         {
                                             offset: 0.5,
@@ -224,8 +225,8 @@ export default {
                                 opacity: 1,
                             },
                         },
-                        data: [18.65, 12.39, 11.64, 10.83],
-                        z: 10,
+                        data: [18.65, 12.39, 11.64, 12.39, 11.64, 10.83],
+                        z: 20,
                     },
                 ],
             }

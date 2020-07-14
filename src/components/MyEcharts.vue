@@ -1,77 +1,62 @@
 <template>
-  <div class="chart-swapper">
-    <div class="chart-root" :id="id" @option="options"></div>
-  </div>
+    <div ref="chart_dom" class="chart_root"></div>
 </template>
 
 <script>
-import echarts from "echarts";
-// 引入提示框组件、标题组件、工具箱组件。
-import "echarts/lib/component/tooltip";
-import "echarts/lib/component/title";
-import "echarts/lib/component/toolbox";
+import echarts from 'echarts'
 export default {
-  props: ["id", "options"],
-  data() {
-    return {
-      chart: null // chart实例
-    };
-  },
-  mounted() {
-    window.addEventListener("resize", () => {
-      if (this.chart) {
-        this.chart.resize();
-        console.log('+++++',this.chart.resize)
-      }
-    });
-
-    this.init(this.id, this.options);
-  },
-  watch: {
-    options: {
-      handler(newVal, oldVal) {
-        this.chart.resize();
-        if (this.chart) {
-          if (newVal) {
-            this.chart.setOption(newVal, true);
-          } else {
-            this.chart.setOption(oldVal, true);
-          }
-        } else {
-          this.init();
+    name: 'Chart',
+    props: {
+        options: {
+            type: Object,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            chart: null, // chart实例,
         }
-      },
-      deep: true //对象内部属性的监听
-    }
-  },
-  methods: {
-    init(id, options) {
-      let myChart = document.getElementById(id);
-      this.chart = echarts.init(myChart);
-      this.chart.setOption(options);
-      window.addEventListener("resize", () => {
+    },
+    watch: {
+        option: {
+            handler() {
+                this.renderChart()
+            },
+            immediate: true,
+            deep: true,
+        },
+    },
+    mounted() {
+        this.initChart()
+        this.renderChart()
+    },
+    methods: {
+        initChart() {
+            if (!this.chart) {
+                this.chart = echarts.init(this.$refs.chart_dom)
+            }
+        },
+        renderChart() {
+            if (this.chart) {
+                this.chart.clear()
+                this.chart.setOption(this.options)
+            }
+        },
+        reSize() {
+            this.chart.resize({ width: 'auto', height: 'auto' })
+        },
+    },
+    beforeDestroy() {
         if (this.chart) {
-          this.chart.resize();
+            this.chart.dispose()
+            this.chart = null
         }
-      });
-    }
-  },
-  // 在当前vue实例销毁前,如果存在chart图表,先销毁chart图表
-  beforeDestroy() {
-    if (this.chart) {
-      this.chart.dispose();
-      this.chart = null;
-    }
-  }
-};
+    },
+}
 </script>
 <style scoped lang="less">
-.chart-swapper {
-  width: 100%;
-  height: 100%;
-  .chart-root {
+.chart_root {
     width: 100%;
     height: 100%;
-  }
 }
 </style>

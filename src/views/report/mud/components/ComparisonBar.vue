@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     optionsCreate(data) {
+      
       let options = {
         color: ["#6fbcf8", "#ff6f00", "#ffaa47"],
         tooltip: {
@@ -114,10 +115,8 @@ export default {
         },
         series: []
       };
-
-      var itemData = {};
-      options.legend.data = this.data.map(item=>item.name)
-      options.series = this.data.map(item => {
+      options.legend.data = data.map(item=>item.name)
+      options.series = data.map(item => {
         var itemData = {};
         itemData.name = item.name;
         itemData.type = "bar";
@@ -125,7 +124,6 @@ export default {
         itemData.barWidth = '3';
         return itemData;
       });
-      console.log("options.series", options.tooltip);
       return options;
     }
   }

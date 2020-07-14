@@ -4,11 +4,15 @@
         <sub-title name="当日药耗统计" />
         <div class="content">
             <rect-box>
-                <analysis-gallery />
+                <div>
+                    <analysis-gallery />
+                    <analysis-gallery />
+                </div>
             </rect-box>
-            <rect-box>
-                <analysis-gallery />
-            </rect-box>
+        </div>
+        <div class="content">
+            <rect-box class="item-swapper left"> <analysis-gallery /></rect-box>
+            <rect-box class="item-swapper"> <analysis-gallery /></rect-box>
         </div>
     </div>
 </template>
@@ -77,7 +81,10 @@ export default {
         display: flex;
         justify-content: space-between;
         .item-swapper {
-            width: 33%;
+            flex: 1;
+        }
+        .left{
+            margin-right: 20px;
         }
     }
 }

@@ -9,8 +9,6 @@ import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/radar'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/tooltip'
-// import { doublePlate } from '../../../../utils'
-
 export default {
     name: 'FlowAnalysisRader',
     props: {
@@ -43,10 +41,6 @@ export default {
                 },
             ],
         },
-        colorIndex: {
-            type: Number,
-            default: 0,
-        },
     },
     data() {
         return {
@@ -60,6 +54,10 @@ export default {
     },
     mounted() {
         this.upData()
+        const that = this
+        window.onresize = () => {
+             that.reSize()
+        }
     },
     methods: {
         initChart() {
@@ -70,61 +68,12 @@ export default {
         upData() {
             this.initChart()
             if (!this.data || !Array.isArray(this.data)) return
-            // let name = this.name
-            // if (name.length > 4) {
-            //   name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
-            // }
             const option = {
-                title: {
-                    text: '合计平均',
-                },
+           
                 tooltip: {
                     show: true,
                     trigger: 'item',
                     // padding: [5, 10],
-                    formatter: function(params) {
-                        let parm = [
-                            {
-                                name: '攻击途径',
-                                max: 10,
-                            },
-                            {
-                                name: '攻击难度',
-                                max: 10,
-                            },
-                            {
-                                name: '权限要求',
-                                max: 10,
-                            },
-                            {
-                                name: '机密性影响',
-                                max: 10,
-                            },
-                            {
-                                name: '完整性影响',
-                                max: 10,
-                            },
-                            {
-                                name: '可用性影响',
-                                max: 10,
-                            },
-                        ]
-                        let obj = ''
-                        for (let i = 0; i < parm.length; i++) {
-                            obj =
-                                obj +
-                                '<div style="display: flex;align-items:center;justify-content:space-between;"><span>' +
-                                parm[i].name +
-                                '：</span><span style="margin-left:5px">' +
-                                params.data.value[i] +
-                                '分</span></div>\n'
-                        }
-                        return params.seriesName + obj
-                    },
-                },
-                legend: {
-                    show: true,
-                    data: ['风险评估'],
                 },
                 radar: {
                     radius: '50%',
@@ -211,7 +160,7 @@ export default {
                                                     offset: 0,
                                                     color: '#06A4FF ',
                                                 },
-                                                 {
+                                                {
                                                     offset: 0.5,
                                                     color: '#3E80FF ',
                                                 },
@@ -229,9 +178,14 @@ export default {
                     },
                 ],
             }
-
             this.chart.clear()
             this.chart.setOption(option)
+        },// 重置图表大小
+        reSize() {
+            if (this.chart) {
+                console.log(123)
+                this.chart.resize({ width: 'auto', height: 'auto' })
+            }
         },
     },
     beforeDestroy() {
@@ -242,7 +196,6 @@ export default {
     },
 }
 </script>
-
 <style lang="less" scoped>
 ._FlowAnalysisRader_root {
     position: relative;
