@@ -103,6 +103,7 @@ export default {
     },
     mounted() {
         window.onresize = () => {
+            console.log(this.$refs.double_contrast_bar)
             this.$refs.double_contrast_bar.reSize()
         }
     },

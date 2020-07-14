@@ -77,18 +77,7 @@
         //   name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
         // }
         const option = {
-          title: {
-            show: true,
-            text: name,
-            textVerticalAlign: 'middle',
-            left: 'center',
-            top: 120,
-            textStyle: {
-              fontSize: 16,
-              lineHeight: 18,
-              color: '#666666',
-            },
-          },
+        
           tooltip: {
             show: true,
             trigger: 'item',

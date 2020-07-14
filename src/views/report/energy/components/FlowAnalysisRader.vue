@@ -183,7 +183,6 @@ export default {
         },// 重置图表大小
         reSize() {
             if (this.chart) {
-                console.log(123)
                 this.chart.resize({ width: 'auto', height: 'auto' })
             }
         },

@@ -4,25 +4,17 @@
     <sub-title name="回流废水统计" />
     <div class="content">
       <rect-box>
-        <div class="title_panel">
-          <span>回流废水流量</span>
-          <span>
-            <span class="right">单位:吨</span>
-            <year-but />
-          </span>
-        </div>
+        <min-title title="回流废水流量">
+          <month-but />
+        </min-title>
         <flow-analysis-bar class="main_panel" />
       </rect-box>
     </div>
     <div class="content">
       <rect-box>
-        <div class="title_panel">
-          <span>回流废水浓度</span>
-          <span>
-            <span class="right">单位:g/L</span>
-            <year-but />
-          </span>
-        </div>
+        <min-title title="回流废水浓度" unit="g/L">
+          <month-but />
+        </min-title>
         <flow-analysis-line class="main_panel" />
       </rect-box>
     </div>
@@ -53,18 +45,8 @@ export default {
     width: 100%;
     height: 365px;
   }
-  .title_panel {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    .right {
-      font-size: 12px;
-      color: #999999;
-      margin-right: 15px;
-    }
-  }
   .main_panel {
-    height: 310px;
+    height: 80%;
   }
 }
 </style>
