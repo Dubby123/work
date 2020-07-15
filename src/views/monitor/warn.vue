@@ -1,12 +1,12 @@
 <template>
  <div class="table-page">
- <i-table :list="list"
+ <!-- <i-table :list="list"
     @handleSelectionChange="handleSelectionChange"
     :options="options"
     :columns="columns"
     :operates="operates"
   >
- </i-table>
+ </i-table> -->
  </div>
 </template>
 <script>
@@ -15,6 +15,11 @@
   components: {iTable},
   data () {
    return {
+      pagination: {
+        total: 100,
+        currentPage: 1,
+        pageNo:1
+      },
        list: [
         {
           id: 1,

@@ -4,11 +4,11 @@
         <sub-title name="当日电耗统计" />
         <div class="content">
             <rect-box>
-                <engrgy-top :data="myData" />
+                <title-panel :data="myData" />
                 <flow-analysis-pie />
             </rect-box>
             <rect-box>
-                <engrgy-top :data="myData1" />
+                <title-panel :data="myData1" />
                 <flow-analysis-rader />
             </rect-box>
         </div>
@@ -16,25 +16,29 @@
 </template>
 
 <script>
-import EngrgyTop from '../../components/EngrgyTop'
-import FlowAnalysisPie from '../../components/FlowAnalysisPie'
+import TitlePanel from '../../../components/TitlePanel'
+import FlowAnalysisPie from '../../../components/FlowAnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
+import icon1 from '../../components/icon/energy-l.png'
+import icon2 from '../../components/icon/energy-r.png'
 export default {
     name: 'EnergyStatistics',
     components: {
-        EngrgyTop,
+        TitlePanel,
         FlowAnalysisPie,
         FlowAnalysisRader,
     },
     data() {
         return {
             myData: {
+                icon: icon1,
                 name: '累计耗电量',
                 value: 321256,
                 unit: '单位:MWH',
                 rate: -8,
             },
             myData1: {
+                icon: icon2,
                 name: '单位耗电量',
                 value: 1541,
                 unit: '单位:MWH',

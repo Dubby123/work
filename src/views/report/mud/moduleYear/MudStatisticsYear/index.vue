@@ -4,7 +4,7 @@
         <sub-title name="当年进泥量" />
         <div class="content">
             <rect-box>
-                <mud-top :data="myData" />
+                <title-panel :data="myData" />
                 <div class="upper">
                     <flow-analysis-pie />
                 </div>
@@ -13,7 +13,7 @@
                 </div>
             </rect-box>
             <rect-box>
-                <mud-top :data="myData1" />
+                <title-panel :data="myData1" />
                 <div class="upper">
                     <flow-analysis-rader />
                 </div>
@@ -26,14 +26,15 @@
 </template>
 
 <script>
-import MudTop from '../../components/MudTop'
-import FlowAnalysisPie from '../../components/FlowAnalysisPie'
+import TitlePanel from '../../../components/TitlePanel'
+import FlowAnalysisPie from '../../../components/FlowAnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
 import SubLineChart from '../../../components/SubLineChart'
+import icon from '../../components/icon/mud.png'
 export default {
     name: 'MudStatistics',
     components: {
-        MudTop,
+        TitlePanel,
         FlowAnalysisPie,
         FlowAnalysisRader,
         SubLineChart,
@@ -41,12 +42,14 @@ export default {
     data() {
         return {
             myData: {
+                icon:icon,
                 name: '进泥流量',
                 value: 321256,
                 unit: '㎡',
                 rate: -8,
             },
             myData1: {
+                icon:icon,
                 name: '进泥浓度',
                 value: 1541,
                 unit: 'MWH/吨',

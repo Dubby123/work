@@ -115,6 +115,10 @@ export default {
         optionsCreate() {
             let Xdata = Array.from({ length: 30 }, (v, k) => k + 1)
             const option = {
+                legend: {
+                 itemWidth:10,
+                 itemHeight:10,
+                },
                 color: ['#ffd5ab', '#f27e15', '#9ed5ff', '#269ffb'],
                 grid: {
                     // show: false,
@@ -138,17 +142,13 @@ export default {
                         lineHeight: 56,
                     },
                     formatter: function(params) {
-                        console.log(params)
                         var res = ''
                         for (var i = 0, l = params.length; i < l; i++) {
-                            res +=
-                                '<div> <span style="display:inline-block;margin-right:10px;width:10px;height:10px;background-color:' +
-                                params[i].color +
-                                '></span><span>' +
-                                params[i].seriesName +
-                                '</span><span style="float: right; margin-left:10px;">' +
-                                params[i].value +
-                                '</span></div>\n'
+                            res += `<div style='overflow: hidden;'>
+                <span style='float: left;margin-right:20px;'>
+                    <span style="display:inline-block;margin-right:10px;width:10px;height:10px;background-color:${params[i].color}"></span><span>${params[i].seriesName}</span></span>
+                <span style="float: right;">${params[i].value}</span>
+            </div>`
                         }
                         return res
                     },
@@ -171,7 +171,7 @@ export default {
                         color: '#666666',
                         fontSize: 10,
                     },
-                    data: [],
+                    data: Xdata,
                 },
                 yAxis: {
                     type: 'value',
@@ -303,7 +303,7 @@ export default {
 <style lang="less" scoped>
 .chart_box {
     position: relative;
-    width: 100%;
+
     height: 80%;
 }
 </style>

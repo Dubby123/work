@@ -1,4 +1,4 @@
- <template>
+<template>
     <div class="water-root">
         <time-button @triggerTime="showType" />
         <div v-if="type === 'date'">
@@ -7,13 +7,21 @@
         </div>
         <div v-if="type === 'month'">
             <flow-water-statistics-month />
-             <quality-analysis-month />
-             <sewage-analysis-month />
-              <sequential-analysis-month />
-              <detection-process-analysis-month />
+            <quality-analysis-month />
+            <sewage-analysis-month />
+            <sequential-analysis-month />
+            <detection-process-analysis-month />
         </div>
         <div v-if="type === 'year'">
-            year
+            <div v-for='n in 10'  style='    display: flex;align-content: space-between;'>
+                <div>
+                    <div
+                        style="display: inline-block;margin-right:10px;width:10px;height:10px;background-color:red"
+                    ></div>
+                    <span>张三 </span>
+                </div>
+                <div style=" text-align: right;" >{{ Math.random()*100 }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -25,16 +33,16 @@ import QualityAnalysisMonth from './moduleMonth/QualityAnalysisMonth'
 import SewageAnalysisMonth from './moduleMonth/SewageAnalysisMonth'
 import SequentialAnalysisMonth from './moduleMonth/SequentialAnalysisMonth'
 import DetectionProcessAnalysisMonth from './moduleMonth/DetectionProcessAnalysisMonth'
-import Breadcrumb from '@/components/Breadcrumb'
+
 export default {
     data() {
         return {
-            type: 'month',
-            MonthTime:''
+            type: 'date',
+            MonthTime: '',
         }
     },
-    created(){
-        console.log('++++',this.$route)
+    created() {
+        console.log('++++', this.$route)
     },
     components: {
         // 当日
@@ -46,16 +54,15 @@ export default {
         SewageAnalysisMonth,
         SequentialAnalysisMonth,
         DetectionProcessAnalysisMonth,
-        Breadcrumb
+        
     },
     methods: {
         showType(val) {
             this.type = val
         },
-        selectTime(val){
+        selectTime(val) {
             this.MonthTime = val
-
-        }
+        },
     },
 }
 </script>
@@ -63,5 +70,6 @@ export default {
 .water-root {
     position: relative;
     width: 100%;
+    
 }
 </style>

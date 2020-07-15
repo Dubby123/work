@@ -1,65 +1,51 @@
-<!-- QualityAnalysisPie -->
 <template>
-  <div class="_FlowAnalysisBar_root">
-    <div class="chart-root" ref="chart_dom"></div>
+  <div class="_ComparisonBar_root">
+    <div class="chart-root">
+      <my-echarts id="'ComparisonBa'" :options="echartsOptions"></my-echarts>
+    </div>
   </div>
 </template>
 <script>
-import echarts from "echarts/lib/echarts";
-import "echarts/lib/chart/bar";
-import "echarts/lib/component/title";
-import "echarts/lib/component/tooltip";
 export default {
-  name: "FlowAnalysisBar",
+  name: "ComparisonBar",
   props: {
     data: {
       type: Array,
       default: () => [
         {
-          name: "新区",
+          name: "浓缩污泥折算量",
           value: [220, 290, 330, 310, 182, 191, 234]
         },
         {
-          name: "老区",
+          name: "临时堆场污泥折算量",
+          value: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+          name: "气浮污泥折算量",
           value: [220, 182, 191, 234, 290, 330, 310]
         }
       ]
     },
-    color: {
-      type: Array,
-      default: () => ["#6fbcf8", "#ffc785"]
-    },
-    title: {
-      type: String,
-      default: "回流废水流量"
-    }
+    color:{
+      type:Array,
+      default:()=>["#6fbcf8", "#ff6f00", "#ffaa47"],
+    } 
   },
   data() {
     return {
-      chart: null,
-      name: ""
+      echartsOptions: ""
     };
   },
-  watch: {
-    data() {
-      this.upData();
-    }
-  },
-  mounted() {
-    this.upData();
+  created() {
+    this.echartsOptions = this.optionsCreate(this.data);
   },
   methods: {
-    initChart() {
-      if (!this.chart) {
-        this.chart = echarts.init(this.$refs.chart_dom);
-      }
-    },
-    upData() {
-      this.initChart();
-      if (!this.data || !Array.isArray(this.data)) return;
-      const Xdata = [...Array(31).keys()].slice(1);
-      const option = {
+    optionsCreate(data) {
+      
+      let options = {
+        
         tooltip: {
+      
           trigger: "axis",
           backgroundColor: "#FFF",
           axisPointer: {
@@ -71,6 +57,7 @@ export default {
             lineHeight: 56
           },
           formatter: function(params) {
+            console.log('params',params);
             var res = "";
             for (var i = 0, l = params.length; i < l; i++) {
               res += `<div><span style="display:inline-block;margin-right:10px;width:10px;height:10px;background-color:${params[i].color}"></span><span>${params[i].seriesName}</span><span style="float: right; margin-left:10px;">${params[i].value}</span></div>\n`;
@@ -80,7 +67,7 @@ export default {
         },
         grid: {
           left: "3%",
-          right: "3%",
+          right: "4%",
           bottom: "3%",
           top: "20%",
           containLabel: true
@@ -88,7 +75,7 @@ export default {
         legend: {
           itemWidth: 10,
           itemHeight: 10,
-          right:20,
+          right:0,
           data: []
         },
         xAxis: {
@@ -109,7 +96,7 @@ export default {
             color: "#666666",
             fontSize: 10
           },
-          data: Xdata
+          data: []
         },
         yAxis: {
           type: "value",
@@ -132,33 +119,31 @@ export default {
         },
         series: []
       };
-      (option.color = this.color), console.log("this.color", this.data);
-      option.legend.data = this.data.map(item => item.name);
-      this.data.forEach((item, index) =>
-        option.series.push({
-          name: item.name,
-          data: item.value,
-          type: "bar",
-          barMaxWidth: "10",
-          stack: "处置量"
-        })
-      );
-      this.chart.clear();
-      this.chart.setOption(option);
+      options.color = this.color
+      options.legend.data = data.map(item=>item.name)
+      options.series = data.map(item => {
+        var itemData = {};
+        itemData.name = item.name;
+        itemData.type = "bar";
+        itemData.data = item.value;
+        itemData.barWidth = '3';
+        return itemData;
+      });
+      return options;
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-._FlowAnalysisBar_root {
+._ComparisonBar_root {
   position: relative;
   width: 100%;
   height: 100%;
   .chart-root {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 80%;
   }
 }
 </style>

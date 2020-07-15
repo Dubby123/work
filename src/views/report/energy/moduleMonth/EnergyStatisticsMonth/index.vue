@@ -1,9 +1,9 @@
 <!-- 流量水质统计 -->
 <template>
-    <div class="_MudStatistics_root">
-        <sub-title name="当月进泥量" />
+    <div class="_EnergyStatistics_root">
+        <sub-title name="当月电耗统计" />
         <div class="content">
-            <rect-box>
+            <rect-box >
                 <title-panel :data="myData" />
                 <div class="upper">
                     <flow-analysis-pie />
@@ -12,7 +12,7 @@
                     <sub-line-chart />
                 </div>
             </rect-box>
-            <rect-box>
+            <rect-box >
                 <title-panel :data="myData1" />
                 <div class="upper">
                     <flow-analysis-rader />
@@ -26,14 +26,12 @@
 </template>
 
 <script>
-
 import TitlePanel from '../../../components/TitlePanel'
 import FlowAnalysisPie from '../../../components/FlowAnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
 import SubLineChart from '../../../components/SubLineChart'
-import icon from '../../components/icon/mud.png'
 export default {
-    name: 'MudStatistics',
+    name: 'EnergyStatistics',
     components: {
         TitlePanel,
         FlowAnalysisPie,
@@ -43,17 +41,15 @@ export default {
     data() {
         return {
             myData: {
-                icon:icon,
-                name: '进泥流量',
+                name: '累计耗电量',
                 value: 321256,
-                unit: '㎡',
+                unit: '单位:MWH',
                 rate: -8,
             },
             myData1: {
-                icon:icon,
-                name: '进泥浓度',
+                name: '单位耗电量',
                 value: 1541,
-                unit: 'MWH/吨',
+                unit: '单位:MWH',
                 rate: -8,
             },
         }
@@ -62,7 +58,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._MudStatistics_root {
+._EnergyStatistics_root {
     position: relative;
     .content {
         margin-top: 20px;

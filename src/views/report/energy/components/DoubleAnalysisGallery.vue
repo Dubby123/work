@@ -135,7 +135,7 @@ export default {
                     {
                         name: 'hill',
                         type: 'pictorialBar',
-                        barMinWidth: 153,
+                        barMinWidth: 91,
                         symbol:
                             'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
                         // barWidth: '150%',
@@ -157,22 +157,19 @@ export default {
                                     colorStops: [
                                         {
                                             offset: 0,
-                                            color: '#2f8eec', //  0%  处的颜色
+                                            color: '#2E96E7', //  0%  处的颜色
                                         },
-                                        // {
-                                        //     offset: 0.5,
-                                        //     color: '#2BC2CD', //  0%  处的颜色
-                                        // },
+                                        {
+                                            offset: 0.5,
+                                            color: '#2BC2CD', //  0%  处的颜色
+                                        },
                                         {
                                             offset: 1,
-                                            color: '#28f3af', //  100%  处的颜色
+                                            color: '#28F3AF', //  100%  处的颜色
                                         },
                                     ],
                                     global: false, //  缺省为  false
                                 },
-                                opacity: 0.8
-                            
-                                
                             },
                             emphasis: {
                                 opacity: 1,
@@ -180,6 +177,56 @@ export default {
                         },
                         data: [22.56, 14.28, 12.45, 14.28, 12.45],
                         z: 10,
+                    },
+                    {
+                        name: 'hill',
+                        type: 'pictorialBar',
+                        barMinWidth: 91,
+                        barCategoryGap: '0%',
+                        barGap: '-100%',
+                        symbol:
+                            'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+                        label: {
+                            show: true,
+                            position: 'top',
+                            distance: 5,
+                            color: '#333333',
+                            // 			fontWeight: 'bolder',
+                            fontSize: 16,
+                        },
+                        itemStyle: {
+                            borderColor: 'red',
+                            borderWidth: 1,
+                            normal: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [
+                                        {
+                                            offset: 0,
+                                            color: 'red', //  0%  处的颜色
+                                        },
+                                        {
+                                            offset: 0.5,
+                                            color: '#29D6DB', //  0%  处的颜色
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: '#00FFBA', //  100%  处的颜色
+                                        },
+                                    ],
+                                    global: false, //  缺省为  false
+                                },
+                            },
+                            emphasis: {
+                                opacity: 1,
+                            },
+                        },
+                        data: [18.65, 12.39, 11.64, 12.39, 11.64, 10.83],
+                        z: 20,
                     },
                 ],
             }

@@ -14,8 +14,8 @@
         <div class="rate">
           <span class="name">同比</span>
           <span class="num">{{data && Math.abs(data.rate)}}%</span>
-          <img v-if="data && data.rate < 0" src="@/assets/imgs/down.png" alt="down">
-          <img v-else src="@/assets/imgs/down/up.png" alt="up">
+          <img v-if="data && data.rate < 0" src="./icon/down.png" alt="down">
+          <img v-else src="./icon/up.png" alt="up">
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import defaultIcon from '@/assets/imgs/icon-1-1.png';
+  import defaultIcon from './icon/icon-1-1.png';
   export default {
     name: 'WaterStatistics',
     props: {

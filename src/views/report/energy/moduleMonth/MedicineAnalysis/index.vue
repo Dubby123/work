@@ -1,42 +1,38 @@
 <!-- 流量水质统计 -->
 <template>
-    <div class="_EffluentAnalysis_root">
-        <sub-title name="回流废水统计" />
+    <div class="_MedicineAnalysis_root">
+        <sub-title name="当日药耗统计" />
         <div class="content">
             <rect-box>
-                <title-panel :data="myData" />
-                <analysis-pie :data="pieData" />
+                <div>
+                    <analysis-gallery />
+                    <analysis-gallery />
+                </div>
             </rect-box>
-            <rect-box>
-                <title-panel :data="myData1"/>
-                <analysis-pie :data="pieData1"  />
-            </rect-box>
+        </div>
+        <div class="content">
+            <rect-box class="item-swapper left"> <analysis-gallery /></rect-box>
+            <rect-box class="item-swapper"> <analysis-gallery /></rect-box>
         </div>
     </div>
 </template>
 
 <script>
-import TitlePanel from '../../../components/TitlePanel'
-import AnalysisPie from '../../components/AnalysisPie'
-import icon from '../../components/icon/mud.png'
-
+import AnalysisGallery from '../../components/AnalysisGallery'
 export default {
-    name: 'EffluentAnalysis',
+    name: 'MedicineAnalysis',
     components: {
-        TitlePanel,
-        AnalysisPie,
+        AnalysisGallery,
     },
     data() {
         return {
             myData: {
-                icon:icon,
                 name: '累计泥饼量',
                 value: 321256,
                 unit: '吨',
                 rate: -8,
             },
             myData1: {
-                icon:icon,
                 name: '处置量',
                 value: 1541,
                 unit: '吨',
@@ -51,7 +47,7 @@ export default {
                     name: '临时堆场污泥折算量',
                     value: 20002,
                 },
-                 {
+                {
                     name: '浓缩污泥折算量',
                     value: 60002,
                 },
@@ -76,16 +72,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._EffluentAnalysis_root {
+._MedicineAnalysis_root {
     position: relative;
     .content {
         margin-top: 20px;
         width: 100%;
-        height: 444px;
+        height: 300px;
         display: flex;
         justify-content: space-between;
         .item-swapper {
-            width: 33%;
+            flex: 1;
+        }
+        .left{
+            margin-right: 20px;
         }
     }
 }

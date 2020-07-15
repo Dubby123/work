@@ -9,18 +9,18 @@
     </div>
     <div class="under">
       <rect-box>
-        <flowAnalysis-bar :color="color" :data="data" />
+        <stack-analysis-bar :color="color" :data="data" />
       </rect-box>
     </div>
   </div>
 </template>
 
 <script>
-import ComparisonBar from "../../components/ComparisonBar";
-import FlowAnalysisBar from "../../components/FlowAnalysisBar";
+import ComparisonBar from "../../../components/ComparisonBar";
+import StackAnalysisBar from "../../../components/StackAnalysisBar";
 export default {
   name: "MudTreatmentStatistics",
-  components: { ComparisonBar, FlowAnalysisBar },
+  components: { ComparisonBar, StackAnalysisBar },
   data() {
     return {
       color: ["#6fbcf8", "#ffaa47", "#ff6f00",],

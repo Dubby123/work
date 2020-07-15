@@ -143,9 +143,9 @@ export default {
                             show: true,
                             position: [440, -2],
                             distance: 0,
-                            // formatter: (params) => {
-                            //     return (params.data && params.data.sum) || 0
-                            // },
+                            formatter: (params) => {
+                                return (params.data && params.data.sum) || 0
+                            },
                             align: 'right',
                             fontSize: 18,
                             color: '#ff5656',

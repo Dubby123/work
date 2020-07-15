@@ -4,7 +4,7 @@
     <div class="content">
       <rect-box>
         <min-title title="泥饼量">
-          <month-but />
+          <month-but v-slot:Time/>
         </min-title>
         <comparison-bar class="main_panel" />
       </rect-box>
@@ -12,20 +12,21 @@
     <div class="content">
       <rect-box>
         <min-title title="处置量">
-          <month-but />
+          <month-but v-slot:Time />
+          123332
         </min-title>
-        <flowAnalysis-bar :color="color" :data="data" class="main_panel" />
+        <stack-analysis-bar :color="color" :data="data" class="main_panel" />
       </rect-box>
     </div>
   </div>
 </template>
 
 <script>
-import ComparisonBar from "../../components/ComparisonBar";
-import FlowAnalysisBar from "../../components/FlowAnalysisBar";
+import ComparisonBar from "../../../components/ComparisonBar";
+import StackAnalysisBar from "../../../components/StackAnalysisBar";
 export default {
   name: "MudTreatmentStatisticsMonth",
-  components: { ComparisonBar, FlowAnalysisBar },
+  components: { ComparisonBar, StackAnalysisBar },
   data() {
     return {
       color: ["#6fbcf8", "#ffaa47", "#ff6f00"],

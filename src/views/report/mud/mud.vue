@@ -25,7 +25,6 @@ import InletAnalysis from "./module/InletAnalysis";
 import MudStatisticsMonth from "./moduleMonth/MudStatisticsMonth";
 import InletAnalysisMonth from "./moduleMonth/InletAnalysisMonth";
 import MudTreatmentStatisticsMonth from "./moduleMonth/MudTreatmentStatisticsMonth";
-
 import MudStatisticsYear from "./moduleYear/MudStatisticsYear";
 import InletAnalysisYear from "./moduleYear/InletAnalysisYear";
 import MudTreatmentStatisticsYear from "./moduleYear/MudTreatmentStatisticsYear";

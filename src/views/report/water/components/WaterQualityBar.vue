@@ -78,10 +78,6 @@ export default {
                     right: 20,
                     // containLabel: true,
                 },
-                legend: {
-                    orient: 'vertical',
-                    left: 10,
-                },
                 xAxis: {
                     type: 'value',
                     splitLine: {

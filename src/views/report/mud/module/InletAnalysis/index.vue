@@ -4,11 +4,11 @@
         <sub-title name="回流废水统计" />
         <div class="content">
             <rect-box>
-                <mud-top :data="myData" />
+                <title-panel :data="myData" />
                 <analysis-pie />
             </rect-box>
             <rect-box>
-                <mud-top :data="myData1" />
+                <title-panel :data="myData1" />
                 <flow-analysis-rader />
             </rect-box>
         </div>
@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import MudTop from '../../components/MudTop'
+import TitlePanel from '../../../components/TitlePanel'
 import AnalysisPie from '../../components/AnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
 export default {
     name: 'InletAnalysis',
     components: {
-        MudTop,
+        TitlePanel,
         AnalysisPie,
         FlowAnalysisRader,
     },

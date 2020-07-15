@@ -1,6 +1,6 @@
 <!-- QualityAnalysisPie -->
 <template>
-    <div class="_QualityAnalysisPie_root">
+    <div class="_FlowAnalysisRader_root">
         <div class="chart-root" ref="chart_dom"></div>
  
     </div>
@@ -13,12 +13,8 @@ import 'echarts/lib/component/tooltip'
 // import { doublePlate } from '../../../../utils'
 
 export default {
-    name: 'QualityAnalysisPie',
+    name: 'FlowAnalysisRader',
     props: {
-        name: {
-            type: String,
-            default: '进水来源分析',
-        },
         data: {
             type: Array,
             default: () => [
@@ -43,10 +39,6 @@ export default {
                     value: '2039',
                 },
             ],
-        },
-        colorIndex: {
-            type: Number,
-            default: 0,
         },
     },
     data() {
@@ -76,9 +68,6 @@ export default {
             //   name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
             // }
             const option = {
-                // title: {
-                //     text: '合计平均',
-                // },
                 tooltip: {
                     show: true,
                     trigger: 'item',

@@ -4,7 +4,7 @@
     <div class="title-swapper">
       <span class="name">进水排水水质</span>
       <div class="legend-swapper">
-        <span>2020-03</span>
+        <month-but/>
         <span class="unit">单位:mg/L</span>
       </div>
     </div>

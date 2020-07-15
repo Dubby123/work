@@ -3,12 +3,13 @@
     <div class="_MudStatistics_root">
         <sub-title name="当日进泥量" />
         <div class="content">
-            <rect-box>
-                <mud-top :data="myData" />
-                <flow-analysis-pie />
+            <rect-box class="_PanelOne_root">
+                <title-panel :data="myData" />
+                <div class="line"></div>
+                <flow-analysis-pie class="mian_box" />
             </rect-box>
-            <rect-box>
-                <mud-top :data="myData1" />
+            <rect-box class="_PanelOne_root">
+                <title-panel :data="myData1" />
                 <flow-analysis-rader />
             </rect-box>
         </div>
@@ -16,25 +17,28 @@
 </template>
 
 <script>
-import MudTop from '../../components/MudTop'
-import FlowAnalysisPie from '../../components/FlowAnalysisPie'
+import TitlePanel from '../../../components/TitlePanel'
+import FlowAnalysisPie from '../../../components/FlowAnalysisPie'
 import FlowAnalysisRader from '../../components/FlowAnalysisRader'
+import icon from '../../components/icon/mud.png'
 export default {
     name: 'MudStatistics',
     components: {
-        MudTop,
+        TitlePanel,
         FlowAnalysisPie,
         FlowAnalysisRader,
     },
     data() {
         return {
             myData: {
+                icon: icon,
                 name: '进泥流量',
                 value: 321256,
                 unit: '㎡',
                 rate: -8,
             },
             myData1: {
+                icon: icon,
                 name: '进泥浓度',
                 value: 1541,
                 unit: 'MWH/吨',
@@ -51,11 +55,21 @@ export default {
     .content {
         margin-top: 20px;
         width: 100%;
-        height: 444px;
+        height: 432px;
         display: flex;
         justify-content: space-between;
-        .item-swapper {
-            width: 33%;
+        box-sizing: border-box;
+        ._PanelOne_root {
+            width: 49%;
+            padding-top:20px;
+            margin: 20 auto;
+            .line {
+                margin: 20px auto;
+                width: 80%;
+                height: 0px;
+                border: dotted 1px #e6e6e6;
+            }
+           
         }
     }
 }

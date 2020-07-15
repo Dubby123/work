@@ -1,24 +1,23 @@
 <!-- PanelOne -->
 <template>
   <rect-box class="_PanelOne_root">
-    <water-statistics :data="myData1" />
+    <title-panel :data="myData1" />
     <div class="chart">
       <water-line-chart />
     </div>
-    <water-statistics class="item-last" :data="myData2" />
+    <title-panel class="item-last" :data="myData2" />
   </rect-box>
 </template>
 
 <script>
-import WaterStatistics from '../../components/WaterStatistics'
+import TitlePanel from '../../../components/TitlePanel'
 import WaterLineChart from '../../components/WaterLineChart'
 import icon1 from "../../components/icon/icon-1-1.png";
 import icon2 from "../../components/icon/icon-1-2.png";
-
 export default {
   name: 'PanelOne',
   components: {
-    WaterStatistics,
+    TitlePanel,
     WaterLineChart,
   },
   data() {

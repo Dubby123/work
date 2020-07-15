@@ -31,6 +31,10 @@ export default {
                 },
             ],
         },
+        color: {
+            type: Array,
+            default: () => ['#6fbcf8', '#ffc785', ],
+        },
     },
     data() {
         return {
@@ -56,12 +60,10 @@ export default {
             if (!this.data || !Array.isArray(this.data)) return
             // let name = this.name;
             const option = {
-                color: ['#6fbcf8', '#ffc785', '#ff6f00'],
                 tooltip: {
                     trigger: 'item',
                     formatter: '{a} <br/>{b} : {c} ({d}%)',
                 },
-
                 series: [
                     {
                         name: '姓名',
@@ -76,29 +78,49 @@ export default {
                         label: {
                             show: true,
                             position: 'outside',
-                            fontSize: '12',
-                            fontWeight: 'bold',
-                            formatter: '{r|}{a|{b}}\n{d}',
-                            lineHeight: 17,
+                            formatter: '{hr|}{a|{b}\n{d}%}',
                             rich: {
-                                r: {
+                                hr: {
+                                    backgroundColor: 't',
                                     width: 10,
                                     height: 10,
-                                    backgroundColor: '#',
+                                    padding: [3, 3, 0, 0],
                                 },
                                 a: {
-                                    color: '#333333',
+                                      color: '#666666',
                                     fontSize: 12,
                                     align: 'center',
-                                    padding: [0, 0, 0, 5],
-                                },
-                                b: {
-                                    color: '#333333',
-                                    fontSize: 11,
-                                    align: 'center',
+                                    padding: [5, 5, 5, 5],
+                
                                 },
                             },
                         },
+                        // label: {
+                        //     show: true,
+                        //     position: 'outside',
+                        //     fontSize: '12',
+                        //     fontWeight: 'bold',
+                        //     formatter: '{r|}{a|{b}}\n{d}',
+                        //     lineHeight: 17,
+                        //     rich: {
+                        //         r: {
+                        //             backgroundColor: 't',
+                        //             width: 10,
+                        //             height: 10,
+                        //         },
+                        //         a: {
+                        //             color: '#333333',
+                        //             fontSize: 12,
+                        //             align: 'center',
+                        //             padding: [0, 0, 0, 5],
+                        //         },
+                        //         b: {
+                        //             color: '#333333',
+                        //             fontSize: 11,
+                        //             align: 'center',
+                        //         },
+                        //     },
+                        // },
                         // data: data.seriesData,
                         emphasis: {
                             itemStyle: {
@@ -111,6 +133,7 @@ export default {
                 ],
             }
             option.series[0].data = this.data
+            option.color = this.color
             this.chart.clear()
             this.chart.setOption(option)
         },

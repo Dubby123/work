@@ -7,7 +7,7 @@
         <min-title title="回流废水流量">
           <month-but />
         </min-title>
-        <flow-analysis-bar class="main_panel" />
+        <stack-analysis-bar class="main_panel" />
       </rect-box>
     </div>
     <div class="content">
@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import FlowAnalysisBar from "../../components/FlowAnalysisBar";
+import StackAnalysisBar from "../../../components/StackAnalysisBar";
 import FlowAnalysisLine from "../../components/FlowAnalysisLine";
+
 export default {
   name: "InletAnalysis",
   components: {
-    FlowAnalysisBar,
+    StackAnalysisBar,
     FlowAnalysisLine
   },
 

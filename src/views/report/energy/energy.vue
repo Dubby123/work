@@ -6,7 +6,8 @@
       <medicine-analysis />
     </div>
     <div v-if="type==='month'">
-      月
+      <energy-statistics-month />
+      <!-- <medicine-analysis-month /> -->
     </div>
     <div v-if="type==='year'">
       年报表
@@ -16,9 +17,11 @@
 <script>
 import EnergyStatistics from "./module/EnergyStatistics";
 import MedicineAnalysis from "./module/MedicineAnalysis";
+
+import EnergyStatisticsMonth from "./moduleMonth/EnergyStatisticsMonth";
 export default {
   name: "mud",
-  components: { MedicineAnalysis, EnergyStatistics },
+  components: { MedicineAnalysis, EnergyStatistics ,EnergyStatisticsMonth},
   data() {
     return {
       type: "month"

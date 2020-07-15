@@ -4,7 +4,7 @@
         <sub-title name="回流废水统计" />
         <div class="content">
             <rect-box>
-                <flow-analysis-bar />
+                <stack-analysis-bar />
             </rect-box>
         </div>
         <div class="content">
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import FlowAnalysisBar from '../../components/FlowAnalysisBar'
+import StackAnalysisBar from '../../../components/StackAnalysisBar'
 import FlowAnalysisLine from '../../components/FlowAnalysisLine'
 export default {
     name: 'InletAnalysis',
     components: {
-        FlowAnalysisBar,
+        StackAnalysisBar,
         FlowAnalysisLine,
     },
 
