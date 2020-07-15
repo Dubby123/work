@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import api from '@/common/api'
 import moment from 'moment'
+import './directives/reload'
 
 Vue.config.productionTip = false
 import './components/globalRegister'

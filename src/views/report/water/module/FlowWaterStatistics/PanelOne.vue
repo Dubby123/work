@@ -50,7 +50,7 @@ export default {
     flex-wrap: wrap;
     .chart {
       margin-top: 30px;
-      width: 80%;
+      width: 100%;
       height: 200px;
     }
     .item-last {
