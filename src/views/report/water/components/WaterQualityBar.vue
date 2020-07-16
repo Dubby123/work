@@ -124,7 +124,7 @@ export default {
             data: [],
             label: {
               show: true,
-              position: [width - 135, -2],
+              position: [width - 145, -2],
               distance: 0,
               formatter: (params) => {
                 return (params.data && params.data.sum) || 0
@@ -293,7 +293,7 @@ export default {
             },
             label: {
               show: true,
-              position: [width - 135, -2],
+              position: [width - 145, -2],
               distance: 0,
               formatter: '{c}',
               align: 'right',
