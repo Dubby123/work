@@ -1,6 +1,6 @@
 <!-- WaterQualityBar -->
 <template>
-    <div class="_WaterQualityBar_root">
+    <div class="_WaterQualityBar_root"   v-reload="chart">
         <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>

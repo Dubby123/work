@@ -10,7 +10,8 @@
             </rect-box>
             <rect-box class="_PanelOne_root">
                 <title-panel :data="myData1" />
-                <flow-analysis-rader />
+                  <div class="line"></div>
+                <flow-analysis-rader class="mian_box" />
             </rect-box>
         </div>
     </div>
@@ -58,7 +59,6 @@ export default {
         height: 432px;
         display: flex;
         justify-content: space-between;
-        box-sizing: border-box;
         ._PanelOne_root {
             width: 49%;
             padding-top:20px;

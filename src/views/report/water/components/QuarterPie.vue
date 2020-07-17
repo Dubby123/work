@@ -1,16 +1,15 @@
 <template>
-    <div class="_QuarterPie_root">
-        <div class="chart-root">
-            <my-echarts
-                id="'ComparisonBa'"
-                :options="echartsOptions"
-            ></my-echarts>
-        </div>
+    <div class="_QuarterPie_root" v-reload="chart">
+        <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>
+
 <script>
+import echarts from 'echarts/lib/echarts'
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/tooltip'
 export default {
-    name: 'ComparisonBar',
+    name: 'QuarterPie',
     props: {
         data: {
             type: Array,
@@ -32,14 +31,26 @@ export default {
     },
     data() {
         return {
-            echartsOptions: '',
+            chart: null,
         }
     },
-    created() {
-        this.echartsOptions = this.optionsCreate()
+    watch: {
+        data() {
+            this.upData()
+        },
+    },
+    mounted() {
+        this.upData()
     },
     methods: {
-        optionsCreate() {
+        initChart() {
+            if (!this.chart) {
+                this.chart = echarts.init(this.$refs.chart_dom)
+            }
+        },
+        upData() {
+            this.initChart()
+            if (!this.data || !Array.isArray(this.data)) return
             let options = {
                 title: {
                     text: '当月进水量季度占比',
@@ -84,8 +95,15 @@ export default {
             }
             options.series[0].name = this.data.map((item) => item.name)
             options.series[0].data = this.data
-            return options
+            this.chart.clear()
+            this.chart.setOption(options)
         },
+    },
+    beforeDestroy() {
+        if (this.chart) {
+            this.chart.dispose()
+            this.chart = null
+        }
     },
 }
 </script>

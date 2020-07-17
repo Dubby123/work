@@ -69,10 +69,6 @@ export default {
             margin-right: 20px;
         }
     }
-    .chart-title {
-        position: relative;
-        height: 80%;
-    }
     .charts_root {
         height: 80%;
     }

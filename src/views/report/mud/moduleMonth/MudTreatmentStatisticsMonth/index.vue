@@ -4,7 +4,7 @@
     <div class="content">
       <rect-box>
         <min-title title="泥饼量">
-          <month-but v-slot:Time/>
+          <month-but slot="right"/>
         </min-title>
         <comparison-bar class="main_panel" />
       </rect-box>
@@ -12,7 +12,7 @@
     <div class="content">
       <rect-box>
         <min-title title="处置量">
-          <month-but v-slot:Time />
+          <month-but slot="right" />
           123332
         </min-title>
         <stack-analysis-bar :color="color" :data="data" class="main_panel" />

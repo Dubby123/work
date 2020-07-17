@@ -1,14 +1,14 @@
 <template>
     <div>
         <div class="title_panel">
-            <span>
-                <span class="left">{{ title }}</span>
-                <slot name="category"></slot>
-            </span>
-            <span>
-                <span class="right">单位 ：{{ unit }}</span>
-                <slot name="Time"></slot>
-            </span>
+            <div>
+                <span class="left">{{title}}</span>
+                <slot name="left"></slot>
+            </div>
+            <div>
+                <span class="right">单位:{{unit}}</span>
+                <slot name="right"></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -44,7 +44,6 @@ export default {
     .right {
         font-size: 12px;
         color: #999999;
-        margin-right: 15px;
     }
 }
 </style>

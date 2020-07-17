@@ -1,13 +1,15 @@
 <template>
-    <div class="_SequentialAnalysisBar_root">
-        <div class="chart-root">
-            <my-echarts :options="echartsOptions" ref="sequential_analysis_chart"></my-echarts>
-        </div>
+    <div class="_SequentialAnalysisBar_root" v-reload="chart">
+        <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>
+
 <script>
+import echarts from 'echarts/lib/echarts'
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
 export default {
-    name: 'ComparisonBar',
+    name: 'SequentialAnalysisBar',
     props: {
         data: {
             type: Array,
@@ -27,22 +29,28 @@ export default {
             default: () => ['#ffa448', 'rgba(255,164,72,0.33)'],
         },
     },
-    data() {
-        return {
-            echartsOptions: '',
+    watch: {
+        data() {
+            this.upData()
+        },
+    },
+    data(){
+        return{
+            chart:null
         }
     },
     mounted() {
-        window.onresize = () => {
-            this.$refs.sequential_analysis_chart.reSize()
-        }
+        this.upData()
     },
-    created() {
-        this.echartsOptions = this.optionsCreate(this.data)
-    },
-
     methods: {
-        optionsCreate() {
+        initChart() {
+            if (!this.chart) {
+                this.chart = echarts.init(this.$refs.chart_dom)
+            }
+        },
+        upData() {
+            this.initChart()
+            if (!this.data || !Array.isArray(this.data)) return
             let Xdata = Array.from({ length: 30 }, (v, k) => k + 1)
             let options = {
                 color: ['#ffa448', 'rgba(255,164,72,0.3)'],
@@ -136,8 +144,15 @@ export default {
                 itemData.barWidth = '8'
                 return itemData
             })
-            return options
+            this.chart.clear()
+            this.chart.setOption(options)
         },
+    },
+    beforeDestroy() {
+        if (this.chart) {
+            this.chart.dispose()
+            this.chart = null
+        }
     },
 }
 </script>
@@ -150,7 +165,7 @@ export default {
     .chart-root {
         position: relative;
         width: 100%;
-        height: 80%;
+        height: 100%;
     }
 }
 </style>

@@ -10,7 +10,7 @@
         <div class="value">{{data && data.value}}</div>
       </div>
       <div class="rate-div">
-        <div class="unit">{{data && data.unit}}</div>
+        <div class="unit">单位：{{data && data.unit}}</div>
         <div class="rate">
           <span class="name">同比</span>
           <span class="num">{{data && Math.abs(data.rate)}}%</span>

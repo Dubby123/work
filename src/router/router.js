@@ -43,6 +43,12 @@ let base_routes = [
     hidden: true,
     component: () => import('@/views/register/register.vue')
   },
+  {
+    path: '/home',
+    name: '首页',
+    hidden: true,
+    component: () => import('@/views/home/home.vue')
+  },
   // {
   //     path: '/',
   //     redirect:'monitor',

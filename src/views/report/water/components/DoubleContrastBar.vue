@@ -1,18 +1,20 @@
+<!-- WaterLineChart -->
 <template>
-    <my-echarts
-        :options="echartsOptions"
-        ref="double_contrast_bar"
-        class="chart_box"
-    ></my-echarts>
+  <div class="_DoubleContrastBar_root" v-reload="chart">
+    <div class="chart-root" ref="chart_dom"></div>
+  </div>
 </template>
+
 <script>
-import echarts from 'echarts'
-export default {
+  import echarts from 'echarts/lib/echarts';
+  import 'echarts/lib/chart/bar';
+  import 'echarts/lib/component/tooltip';
+  export default {
     name: 'DoubleContrastBar',
     props: {
-        myData: {
-            type: Array,
-            default: () => [
+      data: {
+        type: Array,
+        default: () => [
                 {
                     name: '总进水',
                     data: [],
@@ -54,11 +56,11 @@ export default {
                     ],
                 },
                 {
-                    name: '总进水',
+                    name: '总排水',
                     data: [],
                     children: [
                         {
-                            name: '工业进水',
+                            name: '生活排水',
                             value: [
                                 2.0,
                                 2.2,
@@ -75,7 +77,7 @@ export default {
                             ],
                         },
                         {
-                            name: '生活进水',
+                            name: '工业排水',
                             value: [
                                 2.0,
                                 2.2,
@@ -94,30 +96,36 @@ export default {
                     ],
                 },
             ],
-        },
+      },
     },
     data() {
-        return {
-            echartsOptions: '',
-        }
+      return {
+        chart: null,
+      };
+    },
+    watch: {
+      data() {
+        this.upData();
+      },
     },
     mounted() {
-        window.onresize = () => {
-            console.log(this.$refs.double_contrast_bar)
-            this.$refs.double_contrast_bar.reSize()
-        }
+      this.upData();
     },
-    created() {
-        this.echartsOptions = this.optionsCreate()
-    },
-
     methods: {
-        optionsCreate() {
-            let Xdata = Array.from({ length: 30 }, (v, k) => k + 1)
-            const option = {
+      initChart() {
+        if (!this.chart) {
+          this.chart = echarts.init(this.$refs.chart_dom);
+        }
+      },
+      upData() {
+        this.initChart();
+        if (!this.data || !Array.isArray(this.data)) return;
+          let Xdata = Array.from({ length: 30 }, (v, k) => k + 1)
+        const option = {
                 legend: {
                  itemWidth:10,
                  itemHeight:10,
+                 right:0
                 },
                 color: ['#ffd5ab', '#f27e15', '#9ed5ff', '#269ffb'],
                 grid: {
@@ -279,10 +287,10 @@ export default {
                     },
                 ],
             }
-            const YData = this.myData[0].children[0].value
-            const YData1 = this.myData[0].children[1].value
-            const YData2 = this.myData[1].children[0].value
-            const YData3 = this.myData[1].children[1].value
+            const YData = this.data[0].children[0].value
+            const YData1 = this.data[0].children[1].value
+            const YData2 = this.data[1].children[0].value
+            const YData3 = this.data[1].children[1].value
             option.series[0].data = YData
             option.series[1].data = YData1
             option.series[2].data = YData2
@@ -294,16 +302,41 @@ export default {
             option.series[5].data = YData2.map((v, i) => {
                 return v + YData3[i]
             })
-            return option
-        },
+        this.chart.clear();
+        this.chart.setOption(option);
+      },
     },
-}
+    beforeDestroy() {
+      if (this.chart) {
+        this.chart.dispose();
+        this.chart = null;
+      }
+    },
+  };
 </script>
 
 <style lang="less" scoped>
-.chart_box {
+  ._DoubleContrastBar_root {
     position: relative;
-
-    height: 80%;
-}
+    width: 100%;
+    height: 100%;
+    .chart-root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+

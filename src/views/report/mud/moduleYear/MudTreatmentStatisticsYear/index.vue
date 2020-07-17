@@ -1,15 +1,21 @@
 <template>
   <div class="_MudStatistics_root">
     <sub-title name="当月进泥量" />
-
-    <div class="upper">
+    <div class="content">
       <rect-box>
-        <comparison-bar />
+        <min-title title="泥饼量">
+          <month-but slot="right"/>
+        </min-title>
+        <comparison-bar class="main_panel" />
       </rect-box>
     </div>
-    <div class="under">
+    <div class="content">
       <rect-box>
-        <stack-analysis-bar :color="color" :data="data" />
+        <min-title title="处置量">
+          <month-but slot="right" />
+          123332
+        </min-title>
+        <stack-analysis-bar :color="color" :data="data" class="main_panel" />
       </rect-box>
     </div>
   </div>
@@ -19,11 +25,11 @@
 import ComparisonBar from "../../../components/ComparisonBar";
 import StackAnalysisBar from "../../../components/StackAnalysisBar";
 export default {
-  name: "MudTreatmentStatistics",
+  name: "MudTreatmentStatisticsMonth",
   components: { ComparisonBar, StackAnalysisBar },
   data() {
     return {
-      color: ["#6fbcf8", "#ffaa47", "#ff6f00",],
+      color: ["#6fbcf8", "#ffaa47", "#ff6f00"],
       data: [
         {
           name: "清能",
@@ -44,11 +50,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.upper {
-  height: 365px;
-}
-.under {
-  margin-top: 20px;
-  height: 365px;
+._MudStatistics_root {
+  position: relative;
+  .content {
+    margin-top: 20px;
+    width: 100%;
+    height: 365px;
+  }
+
+  .main_panel {
+    height:80%;
+  }
 }
 </style>

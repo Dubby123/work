@@ -37,6 +37,8 @@ export default {
 ._MonthBut_root {
     width: 81px;
     height: 28px;
+    display: inline-block;
+    margin-left: 10px;
     .content /deep/ .el-input {
          width: 100%;
         .el-input__inner {

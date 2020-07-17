@@ -1,6 +1,6 @@
 <!-- QualityAnalysisPie -->
 <template>
-    <div class="_QualityAnalysisPie_root">
+    <div class="_FlowAnalysisPie_root" v-reload="chart">
         <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>
@@ -12,7 +12,7 @@ import 'echarts/lib/component/tooltip'
 import { doublePlate } from '../../../utils'
 
 export default {
-    name: 'QualityAnalysisPie',
+    name: 'FlowAnalysisPie',
     props: {
         name: {
             type: String,
@@ -185,7 +185,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._QualityAnalysisPie_root {
+._FlowAnalysisPie_root {
     position: relative;
     width: 100%;
     height: 100%;

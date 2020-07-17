@@ -3,12 +3,14 @@
     <div class="_EnergyStatistics_root">
         <sub-title name="当日电耗统计" />
         <div class="content">
-            <rect-box>
+            <rect-box class="_PanelOne_root">
                 <title-panel :data="myData" />
+                <div class="line"></div>
                 <flow-analysis-pie />
             </rect-box>
-            <rect-box>
+            <rect-box class="_PanelOne_root">
                 <title-panel :data="myData1" />
+                <div class="line"></div>
                 <flow-analysis-rader />
             </rect-box>
         </div>
@@ -55,11 +57,20 @@ export default {
     .content {
         margin-top: 20px;
         width: 100%;
-        height: 444px;
+        height: 432px;
         display: flex;
         justify-content: space-between;
-        .item-swapper {
-            width: 33%;
+            ._PanelOne_root {
+            width: 49%;
+            padding-top:20px;
+            margin: 20 auto;
+            .line {
+                margin: 20px auto;
+                width: 80%;
+                height: 0px;
+                border: dotted 1px #e6e6e6;
+            }
+           
         }
     }
 }

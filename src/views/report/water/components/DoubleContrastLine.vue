@@ -1,13 +1,15 @@
 <template>
-    <my-echarts
-        :options="echartsOptions"
-        ref="double_contrast_line"
-        class="chart_box"
-    ></my-echarts>
+    <div class="_DoubleContrastLine_root" v-reload="chart">
+        <div class="chart-root" ref="chart_dom"></div>
+    </div>
 </template>
+
 <script>
+import echarts from 'echarts/lib/echarts'
+import 'echarts/lib/chart/line'
+import 'echarts/lib/component/tooltip'
 export default {
-    name: 'ComparisonBar',
+    name: 'DoubleContrastLine',
     props: {
         data: {
             type: Array,
@@ -25,24 +27,30 @@ export default {
     },
     data() {
         return {
-            echartsOptions: '',
+            chart: null,
         }
+    },
+    watch: {
+        data() {
+            this.upData()
+        },
     },
     mounted() {
-        window.onresize = () => {
-            this.$refs.double_contrast_line.reSize()
-        }
+        this.upData()
     },
-    created() {
-        this.echartsOptions = this.optionsCreate()
-    },
-
     methods: {
-        optionsCreate() {
+        initChart() {
+            if (!this.chart) {
+                this.chart = echarts.init(this.$refs.chart_dom)
+            }
+        },
+        upData() {
+            this.initChart()
+            if (!this.data || !Array.isArray(this.data)) return
             let Xdata = Array.from({ length: 30 }, (v, k) => k + 1)
             let option = {
                 color: ['#ffac3d', '#1696ff'],
-                  xAxis: {
+                xAxis: {
                     boundaryGap: false,
                     splitLine: {
                         show: false,
@@ -60,7 +68,7 @@ export default {
                         color: '#666666',
                         fontSize: 10,
                     },
-                    data:Xdata,
+                    data: Xdata,
                 },
                 yAxis: {
                     type: 'value',
@@ -155,17 +163,28 @@ export default {
                     },
                 ],
             }
-            console.log('option', option)
-            return option
+            this.chart.clear()
+            this.chart.setOption(option)
         },
+    },
+    beforeDestroy() {
+        if (this.chart) {
+            this.chart.dispose()
+            this.chart = null
+        }
     },
 }
 </script>
 
 <style lang="less" scoped>
-.chart_box {
+  ._DoubleContrastLine_root {
     position: relative;
     width: 100%;
-    height: 80%;
-}
+    height: 100%;
+    .chart-root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
 </style>

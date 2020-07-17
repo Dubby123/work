@@ -1,6 +1,6 @@
 <!-- WaterLineChart -->
 <template>
-  <div class="_SubLineChart_root">
+  <div class="_SubLineChart_root" v-reload="chart">
     <div class="chart-root" ref="chart_dom"></div>
   </div>
 </template>

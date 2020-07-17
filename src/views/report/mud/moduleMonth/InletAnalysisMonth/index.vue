@@ -5,7 +5,7 @@
     <div class="content">
       <rect-box>
         <min-title title="回流废水流量">
-          <month-but />
+          <month-but slot="right"/>
         </min-title>
         <stack-analysis-bar class="main_panel" />
       </rect-box>
@@ -13,7 +13,7 @@
     <div class="content">
       <rect-box>
         <min-title title="回流废水浓度" unit="g/L">
-          <month-but />
+          <month-but slot="right"/>
         </min-title>
         <flow-analysis-line class="main_panel" />
       </rect-box>

@@ -1,6 +1,6 @@
 <!-- QualityAnalysisPie -->
 <template>
-    <div class="_QualityAnalysisPie_root">
+    <div class="_AnalysisGallery_root"  v-reload="chart">
         <div class="chart-root" ref="chart_dom"></div>
     </div>
 </template>
@@ -12,7 +12,7 @@ import 'echarts/lib/component/tooltip'
 // import { doublePlate } from '../../../../utils'
 
 export default {
-    name: 'QualityAnalysisPie',
+    name: 'AnalysisGallery',
     props: {
         name: {
             type: String,
@@ -69,12 +69,7 @@ export default {
         },
         upData() {
             this.initChart()
-            if (!this.data || !Array.isArray(this.data)) return
-            // let name = this.name
-            // if (name.length > 4) {
-            //   name = name.substring(0, 4) + '\n' + name.substring(4, name.length);
-            // }
-
+            if (!this.data || !Array.isArray(this.data)) return  
             const option = {
                 grid: {
                     left: '20%',
@@ -136,6 +131,7 @@ export default {
                         name: 'hill',
                         type: 'pictorialBar',
                         barMinWidth: 153,
+                        // barCategoryGap: '-130%',
                         symbol:
                             'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
                         // barWidth: '150%',
@@ -197,7 +193,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._QualityAnalysisPie_root {
+._AnalysisGallery_root {
     position: relative;
     width: 100%;
     height: 100%;

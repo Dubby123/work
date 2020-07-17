@@ -1,8 +1,7 @@
 <!-- QualityAnalysisPie -->
 <template>
-    <div class="_FlowAnalysisRader_root">
+    <div class="_FlowAnalysisRader_root"  v-reload="chart">
         <div class="chart-root" ref="chart_dom"></div>
- 
     </div>
 </template>
 <script>
@@ -111,10 +110,6 @@ export default {
                         }
                         return params.seriesName + obj
                     },
-                },
-                legend: {
-                    show: true,
-                    data: ['风险评估'],
                 },
                 radar: {
                     radius: '50%',
@@ -236,7 +231,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-._QualityAnalysisPie_root {
+._FlowAnalysisRader_root {
     position: relative;
     width: 100%;
     height: 100%;

@@ -1,52 +1,32 @@
 <template>
-    <div class="navigator-container" ref="navigator">
-        <div class="navigator_header">
-            绍兴智慧水处理平台
-        </div>
+    <div id="nav-wrap">
+        <h1 class="logo">绍兴智慧水处理平台</h1>
         <el-menu
-            ref="menu"
-            class="el-menu-vertical"
-            :default-active="this.$route.path"
+            class="el-menu-vertical-demo"
+            text-color="#fff"
             background-color="transparent"
             active-text-color="#fff"
-            text-color="rgba(255,255,255,0.85)"
-            router
+            :router="true"
         >
-            <template v-for="(item, index) in navList">
-                <el-menu-item
-                    v-if="!item.childList || item.childList.length <= 0"
-                    :index="item.context"
-                    :key="index"
+            <template v-for="(item, index) in routerList">
+                <el-submenu
+                    :index="'' + index"
+                    v-if="!item.hidden"
+                    :key="item.id"
                 >
-                    <!-- <i :class="'icon icon-' + item.icon"></i> -->
-                       <i class="el-icon-document"></i>
-                    <span slot="title">{{ item.name }}</span>
-                </el-menu-item>
-                <el-submenu :index="item.context" :key="index" v-else>
                     <template slot="title">
-                        <!-- <i :class="'icon icon-' + item.icon"></i
-                        > -->
-                          <i class="el-icon-document"></i>
+                        <i :class="item.icon"></i>
                         <span slot="title">{{ item.name }}</span>
                     </template>
-                    <template v-for="(item, index) in item.childList">
+                    <!--                    子菜单-->
+                    <template v-for="subItem in item.children">
                         <el-menu-item
-                            v-if="!item.childList || item.childList.length <= 0"
-                            :index="item.context"
-                            :key="index"
-                            v-html="item.name"
+                            :index="subItem.path"
+                            v-if="!subItem.hidden"
+                            :key="subItem.id"
                         >
-                        </el-menu-item>
-                        <el-submenu :index="item.context" :key="index" v-else>
-                            <template slot="title">{{ item.name }}</template>
-                            <template v-for="(item, index) in item.childList">
-                                <el-menu-item
-                                    :index="item.context"
-                                    :key="index"
-                                    v-html="item.name"
-                                ></el-menu-item>
-                            </template>
-                        </el-submenu>
+                            {{ subItem.name }}</el-menu-item
+                        >
                     </template>
                 </el-submenu>
             </template>
@@ -55,39 +35,29 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-import CONST from '@/common/const'
 export default {
-    name: 'Navigator',
-    // props: {
-    //     navList: Array
-    // },
-    created() {
-        console.log('NAV_LIST_SOFTWARE', CONST.NAV_LIST_SOFTWARE)
-    },
-    mounted() {
-        // if (this.isCollapse) {
-        //     this.__toggleClass(document.getElementById('body'), 'collapseMenu')
-        // }
-    },
+    name: 'Menu',
     data() {
         return {
-            navList: CONST.NAV_LIST_SOFTWARE,
+            // isCollapse: false
         }
     },
-
-    methods: {},
+    computed: {
+        routerList() {
+            return this.$router.options.routes
+        },
+        isCollapse() {
+            return this.$store.state.app.isCollapse
+        },
+    },
 }
 </script>
-<style lang="less" scoped>
-.navigator-container {
-    min-width: 208px;
-    min-height: 100vh;
-    background-image: linear-gradient(#0b2a92, #070c4f);
-    float: left;
-    overflow-y: auto;
-    overflow-x: hidden;
-    position: relative;
+
+<style scoped lang="less">
+#nav-wrap {
+    min-width: 200px;
+    height: 100vh;
+    background-color: #0b2a92;
     &::after {
         display: inline-block;
         position: absolute;
@@ -98,36 +68,32 @@ export default {
         height: 297px;
         background: url('../../../assets/imgs/cebian.png') no-repeat;
     }
-}
-.navigator_header {
-    width: 100%;
-    font-size: 16px;
-    color: #ffffff;
-    line-height: 56px;
-    background-color: #071059;
-    &::before {
-        display: inline-block;
-        content: '';
-        width: 23px;
-        height: 23px;
-        background: url('../../../assets/imgs/log.png') no-repeat;
-        background-size: 100%;
-        margin-right: 5px;
-    }
-}
-.el-menu-vertical {
-    min-width: 208px;
-    border-right: none;
-    .el-menu-item {
-        height: 56px;
+    .logo {
+        font-size: 16px;
+        color: #ffffff;
         line-height: 56px;
-        font-size: 12px;
-        border-left: 5px solid transparent;
-        &.is-active {
-            font-weight: bold;
-            background-color: #36363d !important;
-            border-left: 5px solid #0066ff;
-            opacity: 0.8;
+        background-color: #071059;
+        &::before {
+            display: inline-block;
+            content: '';
+            width: 23px;
+            height: 23px;
+            background: url('../../../assets/imgs/log.png') no-repeat;
+            background-size: 100%;
+            margin-right: 5px;
+        }
+    }
+    .el-menu {
+        border: none;
+        .el-menu-item {
+            font-size: 12px;
+            // border-left: 5px solid transparent;
+            &.is-active {
+                font-weight: bold;
+                background-color: #36363d !important;
+                border-left: 5px solid #0066ff;
+                opacity: 0.8;
+            }
         }
     }
 }

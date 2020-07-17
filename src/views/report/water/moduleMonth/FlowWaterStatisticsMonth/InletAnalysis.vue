@@ -2,7 +2,7 @@
 <template>
   <rect-box class="_WaterQuality_root">
     <div class="title-swapper">
-      <span class="name">进水排水水质</span>
+      <span class="name">进水水质</span>
       <div class="legend-swapper">
         <month-but/>
         <span class="unit">单位:mg/L</span>

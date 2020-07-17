@@ -1,6 +1,6 @@
 <!-- WaterLineChart -->
 <template>
-    <div class="_WaterComparisonChart_root">
+    <div class="_WaterComparisonChart_root"  v-reload="chart">
         <div class="chart-root" ref="water_comparison_chart"></div>
     </div>
 </template>

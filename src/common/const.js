@@ -2,14 +2,14 @@
  * 分页页数定义
  */
 const PAGESIZE_CONFIG = {
-    normal: [10, 20, 50, 100]
+    normal: [10, 20, 50, 100],
 }
 /**
  * 后台请求结果status约定定义
  */
 const STATUS = {
     SUCCESS: true,
-    ERROR: false
+    ERROR: false,
 }
 /**
  * 导航栏权限列表
@@ -20,107 +20,107 @@ const NAV_LIST = [
         name: '公共目录',
         context: '/directory',
         code: 'PLAT_KM_COMM_CATE',
-        icon: 'file'
+        icon: 'file',
     },
     {
         name: '文档中心',
         context: '/file',
         code: 'PLAT_KM_FILE_CENTER',
-        icon: 'log'
+        icon: 'log',
     },
     {
         name: '文件分享',
-        context: '/file/fileShare'
+        context: '/file/fileShare',
     },
     {
         name: '权限管理',
         code: 'PLAT_KM_AUTH',
         context: '/auth',
-        icon: 'auth'
+        icon: 'auth',
     },
     {
         name: '存储管理',
         context: '/store/mange',
         code: 'PLAT_KM_STORAGE',
-        icon: 'store'
+        icon: 'store',
     },
     {
         name: '存储管理',
         code: 'PLAT_KM_STORAGE_MANAGE',
-        context: '/store/mange'
+        context: '/store/mange',
     },
     {
         name: '报警列表',
         code: 'PLAT_KM_STORAGE_ALARM',
-        context: '/store/alarm'
+        context: '/store/alarm',
     },
     {
         name: '清理策略',
         code: 'PLAT_KM_STORAGE_STRATEGY',
-        context: '/store/strategy'
+        context: '/store/strategy',
     },
     {
         name: '存储清理',
         code: 'PLAT_KM_STORAGE_CLEAR',
-        context: '/store/clean'
+        context: '/store/clean',
     },
     {
         name: '日志列表',
         code: 'PLAT_KM_STORAGE_LOG',
-        context: '/store/log'
+        context: '/store/log',
     },
     {
         name: '水印管理',
         context: '/watermark',
         code: 'PLAT_KM_WATERMARK',
-        icon: 'watermark'
+        icon: 'watermark',
     },
     {
         name: '公共目录权限',
         code: 'PLAT_KM_AUTH_CATEGORY',
-        context: '/auth/directory'
+        context: '/auth/directory',
     },
     {
         name: '文件接口权限',
         code: 'PLAT_KM_AUTH_INTERFACE',
-        context: '/auth/file'
+        context: '/auth/file',
     },
     {
         name: '文档预览',
-        context: '/directory/preview'
+        context: '/directory/preview',
     },
     {
         name: '文档预览',
-        context: '/directory/preview/apply'
+        context: '/directory/preview/apply',
     },
     {
         name: '文档下载',
-        context: '/directory/download/apply'
+        context: '/directory/download/apply',
     },
     {
         name: '新增存储',
-        context: '/store/mange/add'
+        context: '/store/mange/add',
     },
     {
         name: '修改存储',
-        context: '/store/mange/edit'
+        context: '/store/mange/edit',
     },
     {
         name: '新增报警',
-        context: '/store/alarm/add'
+        context: '/store/alarm/add',
     },
     {
         name: '新增策略',
-        context: '/store/strategy/add'
+        context: '/store/strategy/add',
     },
     {
         name: '新增接口',
-        context: '/auth/file/add'
+        context: '/auth/file/add',
     },
     {
         name: '修改接口',
-        context: '/auth/file/edit'
-    }
+        context: '/auth/file/edit',
+    },
 ]
 const NAV_LIST_SOFTWARE = [
     {
@@ -132,19 +132,19 @@ const NAV_LIST_SOFTWARE = [
             {
                 name: '流程检测',
                 code: 'PLAT_AUTH_DIRECTORY',
-                context: '/monitor/process'
+                context: '/monitor/process',
             },
             {
                 name: '生产报警',
                 code: 'PLAT_FILE_AUTH',
-                context: '/monitor/warn'
+                context: '/monitor/warn',
             },
             {
                 name: '报警设置',
                 code: 'PLAT_FILE_AUTH',
-                context: '/monitor/alarmset'
-            }
-        ]
+                context: '/monitor/alarmset',
+            },
+        ],
     },
     {
         name: '生产报表',
@@ -155,26 +155,33 @@ const NAV_LIST_SOFTWARE = [
             {
                 name: '水质报表',
                 code: 'PLAT_STORAGE_MANGE',
-                context: '/report/water'
+                context: '/report/water',
             },
             {
                 name: '泥处理报表',
                 code: 'PLAT_STORAGE_ALARM',
-                context: '/report/mud'
+                context: '/report/mud',
             },
             {
                 name: '能耗报表',
                 code: 'PLAT_STORAGE_STRATEGY',
-                context: '/report/energy'
-            }
-        ]
+                context: '/report/energy',
+            },
+        ],
     },
     {
         name: '数据填报',
         code: 'PLAT_WATERMARK',
-        context: '/watermark',
-        icon: 'watermark'
-    }
+        context: '/water',
+        icon: 'watermark',
+        children: [
+            {
+                name: '数据录入',
+                code: 'PLAT_STORAGE_STRATEGY',
+                context: '/data/water_data',
+            },
+        ],
+    },
 ]
 /**
  * 页面按钮权限列表
