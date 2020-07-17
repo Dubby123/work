@@ -8,6 +8,7 @@ Vue.directive('reload', {
     const resizeListener = () => {
       if (el._chart) {
         el._chart.resize();
+        if (el._chart._reset) el._chart._reset();
       }
     };
     domResize.on(el, resizeListener);
